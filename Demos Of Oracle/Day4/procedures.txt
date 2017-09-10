@@ -1,0 +1,370 @@
+SQL> CREATE PROCEDURE spDemo1
+  2  AS
+  3  BEGIN
+  4  	DBMS_OUTPUT.PUT_LINE('Hello');
+  5  END spDemo1;
+  6  /
+
+Procedure created.
+
+SQL> execute spDemo1;
+
+PL/SQL procedure successfully completed.
+
+SQL> set serveroutput on
+
+SQL> execute spDemo1;
+Hello                                                                           
+
+PL/SQL procedure successfully completed.
+
+SQL> exec spDemo1;
+Hello                                                                           
+
+PL/SQL procedure successfully completed.
+
+SQL> BEGIN
+  2  	spDemo1;
+  3  END;
+  4  /
+Hello                                                                           
+
+PL/SQL procedure successfully completed.
+
+SQL> SELECT PROCEDURE_NAME FROM USER_PROCEDURES;
+
+PROCEDURE_NAME                                                                  
+------------------------------                                                  
+VIEWDEPT                                                                        
+CALCSAL                                                                         
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+VIEWDEPT                                                                        
+UPDSALARY                                                                       
+                                                                                
+                                                                                
+                                                                                
+
+PROCEDURE_NAME                                                                  
+------------------------------                                                  
+VIEWDETAILS                                                                     
+P                                                                               
+F                                                                               
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+
+PROCEDURE_NAME                                                                  
+------------------------------                                                  
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+SPVIEWEMPS                                                                      
+
+PROCEDURE_NAME                                                                  
+------------------------------                                                  
+SPADDEMP                                                                        
+CALCULATEREVISEDSAL                                                             
+SPDELETEEMP                                                                     
+SPVIEWEMP                                                                       
+SPHELLO                                                                         
+                                                                                
+                                                                                
+                                                                                
+GETEMPS                                                                         
+                                                                                
+                                                                                
+
+PROCEDURE_NAME                                                                  
+------------------------------                                                  
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+
+PROCEDURE_NAME                                                                  
+------------------------------                                                  
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+
+PROCEDURE_NAME                                                                  
+------------------------------                                                  
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+
+74 rows selected.
+
+SQL> 
+SQL> SELECT Text FROM User_Source WHERE Name ='SPDEMO1' ORDER BY Line;
+
+TEXT                                                                            
+--------------------------------------------------------------------------------
+PROCEDURE spDemo1                                                               
+AS                                                                              
+BEGIN                                                                           
+	DBMS_OUTPUT.PUT_LINE('Hello');                                                 
+END spDemo1;                                                                    
+
+SQL>  CREATE OR REPLACE PROCEDURE spDemo1
+  2  AS
+  3  BEGIN
+  4  	DBMS_OUTPUT.PUT_LINE('Helloworld');
+  5  END spDemo1;
+  6  /
+
+Procedure created.
+
+SQL> SELECT Text FROM User_Source WHERE Name ='SPDEMO1' ORDER BY Line;
+
+TEXT                                                                            
+--------------------------------------------------------------------------------
+PROCEDURE spDemo1                                                               
+AS                                                                              
+BEGIN                                                                           
+	DBMS_OUTPUT.PUT_LINE('Helloworld');                                            
+END spDemo1;                                                                    
+
+SQL> CREATE OR REPLACE PROCEDURE spAdd
+  2  AS
+  3  result NUMBER;
+  4  BEGIN
+  5  	result:=10+10;
+  6  	DBMS_OUTPUT.PUT_LINE(result);
+  7  END spAdd;
+  8  /
+
+Procedure created.
+
+SQL> exec spAdd
+20                                                                              
+
+PL/SQL procedure successfully completed.
+
+SQL> CREATE OR REPLACE PROCEDURE spNum
+  2  AS
+  3  num NUMBER;
+  4  BEGIN
+  5  	num:=10;
+  6  	IF num>0 THEN
+  7  	DBMS_OUTPUT.PUT_LINE('Positive NUMBER');
+  8  	ELSE
+  9  	DBMS_OUTPUT.PUT_LINE('Negative NUMBER');
+ 10  	END IF;
+ 11  END spNum;
+ 12  /
+
+Procedure created.
+
+SQL> exec spNum
+Positive NUMBER                                                                 
+
+PL/SQL procedure successfully completed.
+
+SQL> CREATE OR REPLACE PROCEDURE spNum(num IN NUMBER)
+  2  AS
+  3  BEGIN
+  4  	IF num>0 THEN
+  5  	DBMS_OUTPUT.PUT_LINE('Positive NUMBER');
+  6  	ELSE
+  7  	DBMS_OUTPUT.PUT_LINE('Negative NUMBER');
+  8  	END IF;
+  9  END spNum;
+ 10  /
+
+Procedure created.
+
+SQL> exec spNum(30);
+Positive NUMBER                                                                 
+
+PL/SQL procedure successfully completed.
+
+SQL> exec spNum(-30);
+Negative NUMBER                                                                 
+
+PL/SQL procedure successfully completed.
+
+SQL> CREATE OR REPLACE PROCEDURE spAdd(num1 IN NUMBER,num2 IN NUMBER,num3 OUT NUMBER)
+  2  AS
+  3  BEGIN
+  4  	num3:=num1+num2;
+  5  END;
+  6  /
+
+Procedure created.
+
+
+SQL> CREATE OR REPLACE PROCEDURE spAdd(num1 IN NUMBER,num2 IN NUMBER,num3 OUT NUMBER)
+  2  AS
+  3  BEGIN
+  4  	num3:=num1+num2;
+  5  END;
+  6  /
+
+Procedure created.
+
+SQL> DECLARE
+  2     result NUMBER;
+  3  BEGIN
+  4     spAdd(4,5,result);
+  5     DBMS_OUTPUT.PUT_LINE(result);
+  6  END;
+  7  /
+9                                                                               
+
+PL/SQL procedure successfully completed.
+
+SQL> VARIABLE result NUMBER;
+SQL> execute spAdd(7,3,:result);
+
+PL/SQL procedure successfully completed.
+
+SQL> print result
+
+    RESULT                                                                      
+----------                                                                      
+        10                                                                      
+
+SQL> CREATE OR REPLACE PROCEDURE spEmp
+  2  (nEmpno IN employee.empno%TYPE,
+  3   nSal IN OUT NUMBER)
+  4  AS
+  5  nMinSal NUMBER;
+  6  BEGIN
+  7  	SELECT min(sal) INTO nMinSal FROM employee;
+  8  	IF nSal<nMinSal
+  9  	THEN
+ 10  		nSal:=nSal*.3;
+ 11  	END IF;
+ 12  END spEmp;
+ 13  /
+
+Procedure created.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  	salno NUMBER;
+  3  BEGIN
+  4  	salno:=&salno;
+  5  	spEmp(&empno,salno);
+  6  	DBMS_OUTPUT.PUT_LINE(salno);
+  7* END;
+SQL> /
+Enter value for salno: 1250
+old   4: 	salno:=&salno;
+new   4: 	salno:=1250;
+Enter value for empno: 7521
+old   5: 	spEmp(&empno,salno);
+new   5: 	spEmp(7521,salno);
+375                                                                             
+
+PL/SQL procedure successfully completed.
+
+SQL> CREATE OR REPLACE PROCEDURE spEmp
+  2  (nEmpno IN employee.empno%TYPE,
+  3   nSal IN OUT NUMBER)
+  4  AS
+  5  nMinSal NUMBER;
+  6  BEGIN
+  7     SELECT min(sal) INTO nMinSal FROM employee;
+  8     IF nSal<nMinSal
+  9     THEN
+ 10             nSal:=nSal+nSal*.3;
+ 11     END IF;
+ 12  END spEmp;
+ 13  /
+
+Procedure created.
+
+SQL> DECLARE
+  2     salno NUMBER;
+  3  BEGIN
+  4     salno:=&salno;
+  5     spEmp(&empno,salno);
+  6     DBMS_OUTPUT.PUT_LINE(salno);
+  7  END;
+  8  /
+Enter value for salno: 1250
+old   4:    salno:=&salno;
+new   4:    salno:=1250;
+Enter value for empno: 7521
+old   5:    spEmp(&empno,salno);
+new   5:    spEmp(7521,salno);
+1625                                                                            
+
+PL/SQL procedure successfully completed.
+
+SQL> CREATE OR REPLACE FUNCTION fnLength(str VARCHAR2)
+  2  RETURN NUMBER
+  3  AS
+  4  len NUMBER;
+  5  BEGIN
+  6  	len:=LENGTH(str);
+  7  	RETURN len;
+  8  END fnLength;
+  9  /
+
+Function created.
+
+SQL> SELECT fnLength('Test') FROM dual;
+
+FNLENGTH('TEST')                                                                
+----------------                                                                
+               4                                                          
+SQL> VARIABLE len NUMBER
+SQL> execute :len:=fnLength('Test');
+
+PL/SQL procedure successfully completed.
+
+SQL> print len
+
+       LEN                                                                      
+----------                                                                      
+         4                                                                      
+
+SQL> BEGIN
+  2  	DBMS_OUTPUT.PUT_LINE(fnLength('TEst'));
+  3  END;
+  4  /
+4                                                                               
+
+PL/SQL procedure successfully completed.
+
+SQL> spool off

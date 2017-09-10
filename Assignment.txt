@@ -1,0 +1,31 @@
+1. SELECT 
+account_number
+, balance 
+FROM account 
+WHERE balance > 1200
+
+3. select distinct customer-name from borrower	where customer-name in (select customer-name                                                       from depositor)
+
+4. Find all customers who have both an account and a loan at the bank
+	select customer-name from borrower where exists (select * from depositor           where depositor.customer-name = borrower.customer-name)
+
+5. Find all customers who have both an account and a loan at the Perryridge branch
+		select distinct customer-name	from borrower, loan	where borrower.loan-number = loan.loan-number and branch-name = “Perryridge” and                 (branch-name, customer-name) in (select branch-name, customer-name from depositor, account where depositor.account-number = account.account-number)
+
+6. Find all customers who have a loan at the bank but do not have an account at the bank
+select distinct customer-name	from borrower, loan	where borrower.loan-number = loan.loan-number and branch-name = “Perryridge” and customer-name not in (select customer-name from depositor)
+
+7.  Find the names of all customers who have an account at the Downtown and Mianus branches. 
+select distinct customer-name	from borrower, loan	where borrower.loan-number = loan.loan-number and branch-name in(“Downtown”,"Mianus")
+
+8.  Find the total amount each branch has in accounts. 
+select branch_name, sum(balance) from
+Account A join Branch B 
+on A.branch_name = B.brance_name
+
+9.  Find the average loan amount of each customer 
+SELECT customer_name, AVG(amount) AS avg_amt  FROM Customer c join loan l GROUP BY customer_name;
+ 
+10. Find all customers who have an account at all branches located in Brooklyn.
+		select distinct S.customer-name from depositor as S where not exists (		(select branch-name from branch where branch-city = ‘Brooklyn’) except (select R.branch-name from depositor as T, account as R where T.account-number = R.account-number and			     S.customer-name = T.customer-name))
+

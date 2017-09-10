@@ -1,0 +1,20 @@
+CREATE SEQUENCE my_seq
+ START WITH     101
+ INCREMENT BY   1;
+
+
+Implicit conversions: PL/SQL attempts to convert data types dynamically if they are mixed in a statement. Consider the following example:
+DECLARE
+ v_salary NUMBER(6):=6000;
+ v_sal_hike VARCHAR2(5):='1000';
+ v_total_salary v_salary%TYPE;
+BEGIN
+ v_total_salary:=v_salary + v_sal_hike;
+END;/
+
+
+Implicit conversions can be between: 
+Characters and numbers
+Characters and dates
+
+Explicit conversions: To convert values from one data type to another, use built-in functions. For example, to convert a CHAR value to a DATE or NUMBER value, use TO_DATE or TO_NUMBER, respectively.

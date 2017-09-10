@@ -1,0 +1,130 @@
+Different Database Languages like
+	MS Access	- DBMS
+	MS Sql server 	- RDBMS
+	Oracle       	- OORDBMS
+	SQLite
+	MySQL
+	DB2
+	Sybase, etc		
+
+Why we need Data?
+	
+Where data can be stored?
+	
+Data?
+	It is collection of facts or raw
+	For E.g: Students marks 
+Information?
+	Organized data or Processed data is called as Information
+	For E.g: Total and Percentage
+
+Database?
+	It is a storage space where we can store our data in the form of physically related tables of rows and columns at some centralized location, so that it will be available all the time
+	For E.g: MS SQL Server, Oracle
+
+Management?
+	Insert , update, delete  and retrieve operations on Database is called as Management 
+
+System?
+	To manage CRUD (Create Read Update Delete)
+DBMS?
+	Database Management System
+	For E.G: MS Access
+RDBMS?
+	Relational DBMS => MS SQL Server 
+
+OORDBMS? => Object Oriented Relational DBMS
+	Oracle 8i, 9i, 10G, 11G, 12C
+
+
+DDL 	 deals with structure of database object
+	create :
+		creates structure of database object
+			for eg: table0
+
+	alter : 	modifies structure of database object
+		like adding new col, adding new constraint
+		drop or modify col or constraint
+
+	drop:	drops database object structure along with data
+
+	truncate: deletes all data all together, it will make your 	table empty. but retains structure
+
+	Note: once data is truncated, it can not be recovered
+ 	transactio	log file is not maintained for truncate
+
+DML - deals with data
+	
+	insert : to add new record
+
+	update: to modify existing record
+	
+	delete: deletes existing record
+
+	merge : combines insert and update. If record already exist, then it updates, otherwise it adds
+	eg: dataware house operations
+
+DCL : Data Control Lang
+
+	Grant : gives permissions to invidual or role
+	
+	Revoke : taking back permissions from individual or role
+
+DTL : Data Transactional Lang
+	It is collection of one or more sql statements executing all 	together as single logical unit of work
+
+Failed	S1	=>	U[A/C] De 	Server [C/E]
+Failed	S2	=>	U[A/C] Cr	 	Server [C/E]
+
+
+	S3	=>		Server [C/E]
+	S4	=>		Server [C/E]
+	
+	Commit : it saves your changes done to database
+	Rollback : undo the changes, bringing to earlier stage
+	Savepoint : it is like a marker to which Xn to be rollback
+
+	begin
+		
+		Insert
+		savepoint s1;
+		Update
+		savepoint s2;
+
+		commit/rollback to s1;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

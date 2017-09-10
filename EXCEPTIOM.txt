@@ -1,0 +1,129 @@
+-- no data found
+DECLARE
+    	stud student%ROWTYPE;
+BEGIN
+    	SELECT * INTO stud FROM student WHERE cid=102;
+END;
+
+-- HANDLE EXCEPTION - no data found
+DECLARE
+    	stud student%ROWTYPE;
+BEGIN
+    	SELECT * INTO stud FROM student WHERE cid=102;
+	EXCEPTION
+    	WHEN NO_DATA_FOUND THEN
+  	DBMS_OUTPUT.PUT_LINE('course id not exits');
+END;
+
+-- HANDLE EXCEPTION - TOO MANY ROWS
+DECLARE
+    	stud student%ROWTYPE;
+BEGIN
+    	SELECT * INTO stud FROM student WHERE cid=101;
+	EXCEPTION
+    	WHEN NO_DATA_FOUND THEN
+	  	DBMS_OUTPUT.PUT_LINE('course id not exits');
+	WHEN TOO_MANY_ROWS THEN
+		DBMS_OUTPUT.PUT_LINE('More than 1 student attending 1 course');
+END;
+
+-- HANDLE EXCEPTION - WHEN OTHERS
+DECLARE
+    	stud student%ROWTYPE;
+	result NUMBER;
+BEGIN
+    	SELECT * INTO stud FROM student WHERE cid=102;
+	result:=1/0;
+EXCEPTION
+    	WHEN NO_DATA_FOUND THEN
+	  	DBMS_OUTPUT.PUT_LINE('course id not exits');
+	WHEN TOO_MANY_ROWS THEN
+		DBMS_OUTPUT.PUT_LINE('More than 1 student attending 1 course');
+	WHEN OTHERS THEN
+		DBMS_OUTPUT.PUT_LINE('Other exception occurs');
+		DBMS_OUTPUT.PUT_LINE(SQLCODE||SQLERRM);
+END;
+
+-- ERRORLOG TABLE
+CREATE TABLE ERRORLOG
+(ERRNUM VARCHAR2(50),
+ERRDESCRIP VARCHAR2(100),
+ERRDATE DATE)
+
+DECLARE
+    	stud student%ROWTYPE;
+      result NUMBER;
+      scode VARCHAR2(20);
+      msg VARCHAR2(40);
+BEGIN
+    	SELECT * INTO stud FROM student WHERE cid=102;
+	result:=1/0;
+EXCEPTION
+    	WHEN NO_DATA_FOUND THEN
+	  	DBMS_OUTPUT.PUT_LINE('course id not exits');
+	WHEN TOO_MANY_ROWS THEN
+		DBMS_OUTPUT.PUT_LINE('More than 1 student attending 1 course');
+	WHEN OTHERS THEN
+		DBMS_OUTPUT.PUT_LINE('Other exception occurs');
+    		DBMS_OUTPUT.PUT_LINE(SQLCODE||SQLERRM);
+		scode:=SQLCODE;
+	   	msg:=SQLERRM;
+        		INSERT INTO errorlog VALUES(scode,msg,sysdate);
+END;
+
+-- CURSOR WITH USERDEFINED EXCEPTION
+DECLARE
+  	CURSOR cname IS SELECT name FROM student WHERE cid=&cid;
+  	vcSname student.name%TYPE;
+  	no_data EXCEPTION;
+  BEGIN
+ 	OPEN cname;
+  	FETCH cname INTO vcSname;
+  	IF cname%ROWCOUNT>0
+  	THEN
+	WHILE cname%FOUND
+  	LOOP
+  		DBMS_OUTPUT.PUT_LINE(vcSname);
+  		FETCH cname INTO vcSname;
+  	END LOOP;
+  	ELSE
+  		--DBMS_OUTPUT.PUT_LINE('msg');
+  		RAISE no_data;
+  	END IF;
+	CLOSE cname;
+  EXCEPTION
+  	WHEN no_data THEN
+  		DBMS_OUTPUT.PUT_LINE('No data exists');
+ END;
+
+-- PRAGMA EXCEPTION_INIT
+
+  DECLARE
+  	CURSOR cname IS SELECT name FROM student WHERE cid=101;
+  	vcSname student.name%TYPE;
+  	no_data EXCEPTION;
+    	PRAGMA EXCEPTION_INIT(no_data,-20888);
+  BEGIN
+ 	OPEN cname;
+  	FETCH cname INTO vcSname;
+  	IF cname%ROWCOUNT>0
+  	THEN
+  	LOOP
+  		DBMS_OUTPUT.PUT_LINE(vcSname);
+  		EXIT WHEN cname%NOTFOUND;
+  		FETCH cname INTO vcSname;
+  	END LOOP;
+  	ELSE
+  		--DBMS_OUTPUT.PUT_LINE('msg');
+  		--RAISE no_data;
+      RAISE_APPLICATION_ERROR(-20888,'No data exists');
+  	END IF;
+  EXCEPTION
+  	WHEN no_data THEN
+  		--DBMS_OUTPUT.PUT_LINE('No data exists');
+	      DBMS_OUTPUT.PUT_LINE(SQLCODE||SQLERRM);
+ END;
+
+
+
+

@@ -1,0 +1,18 @@
+3 types of Errors
+1) Syntax Error OR Compile time error
+No Compilation, Hence no Execution
+E.G:
+; expected, from as variable name
+
+2) Exception OR Runtime Error
+Compilation takes place, but no execution
+
+E.G:
+Query returns Too_Many_Rows
+DivideByZeroException,etc
+
+3) Logical Error
+Compilation and Execution takes place but unexpected result will be shown
+E.G:
+5/2= 2.5	=> 5/2 = 2
+

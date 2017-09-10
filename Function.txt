@@ -1,0 +1,39 @@
+-- Area of Circle
+CREATE Or Replace FUNCTION circle_area (  p_radius IN NUMBER ) 
+RETURN NUMBER AS  
+v_pi   NUMBER := 3.1415926;  
+v_area NUMBER; 
+BEGIN  
+
+-- circle area is pi multiplied by the radius squared
+ v_area := v_pi * POWER(p_radius, 2);  
+RETURN v_area; 
+END circle_area; 
+
+-- Calling Function
+SELECT circle_area(2) FROM dual; 
+
+-- Calling function with named notation
+SELECT circle_area(p_radius => 4) FROM dual; 
+
+-- Average Product Price 
+CREATE FUNCTION average_product_price ( 
+ p_product_type_id IN INTEGER ) 
+RETURN NUMBER AS  
+v_average_product_price NUMBER; 
+BEGIN  SELECT AVG(price)  INTO v_average_product_price  
+FROM products  
+WHERE product_type_id = p_product_type_id;  
+RETURN v_average_product_price; 
+END average_product_price; 
+
+-- Calling Function
+SELECT average_product_price(1) FROM dual; 
+
+-- Getting information about functions
+SELECT object_name, aggregate, parallel 
+FROM user_procedures 
+WHERE object_name IN ('CIRCLE_AREA', 'AVERAGE_PRODUCT_PRICE'); 
+
+--Dropping a Function
+DROP FUNCTION circle_area;

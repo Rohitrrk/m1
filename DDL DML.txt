@@ -1,0 +1,311 @@
+		-- Create Student Table
+			CREATE TABLE Student
+			(sid INT PRIMARY KEY,
+			name VARCHAR2(20) NOT NULL,
+			address VARCHAR2(15),
+			cname VARCHAR2(10),
+			fees NUMBER(7,2))
+
+		-- Retrieve all tables from user
+			SELECT * 
+			FROM tab
+
+		-- Retrieve all records from Student
+			SELECT * 
+			FROM Student
+	
+		-- Inserting a record
+		INSERT INTO Student VALUES
+		(1,'Rajat',	'Delhi','Java',9000.00)
+		
+		INSERT INTO Student VALUES
+		(&sid,'&name','&addr','&coursename',&fees)
+
+		INSERT INTO Student VALUES
+		(null,'Aditya','Mumbai','Java',9000.00)
+		
+		-- NOT NULL will not take null value
+		INSERT INTO Student VALUES
+		(6,null,'Mumbai','Java',9000.00)
+
+		-- Adding null value in null columns		
+		INSERT INTO Student VALUES
+		(6,'Aditya',null,'Java',9000.00)
+
+		-- chanding order of columns
+		INSERT INTO Student (sid, name, cname, 					address, fes)	VALUES
+		(7,'Aditi','PHP','Pune',8000.00)
+	
+		-- omitting null columns in insert
+		INSERT INTO Student VALUES
+		(8,'Akash','PHP')
+		
+		Soln:		
+		INSERT INTO Student(sid,name,cname) VALUES
+		(8,'Akash','PHP')
+
+
+		-- displaying colnames, datatypes and constraints
+		DESC Student
+
+		-- update doj with cname Java		
+		UPDATE Student
+		SET doj = '29-DEC-16'	-- DD-MON-YY
+		WHERE cname = 'Java'
+
+		-- Skip where clause
+		UPDATE Student
+		SET doj = '25-DEC-16'
+
+		-- delete query
+		DELETE FROM Student
+		WHERE sid=8
+
+		-- Distinct - omits duplicates
+		SELECT DISTINCT cname
+		FROM Student
+
+		-- Applying Col headings
+		SELECT sid as "Student ID",
+		cname "Course Name",
+		fees Course_Fees
+		FROM Student
+
+		-- Character literals are casesensitive
+		SELECT * 
+		FROM Student 
+		WHERE lower(name) = 'akash'
+
+		-- Arithmetic Operator
+		-- increase course fees by 500 for Dot Net 
+		SELECT sid, fees,  fees+500 as "New Fees"
+		FROM Student
+		WHERE cname = 'DotNet'
+		
+		-- [NOT] BETWEEN 
+		SELECT * 
+		FROM Student
+		WHERE fees BETWEEN 5000 AND 9000
+
+		-- [NOT] NULL
+		SELECT * 
+		FROM Student
+		WHERE addr = null
+		
+		SELECT * 
+		FROM Student
+		WHERE addr is null
+
+
+		-- ORDER BY CLAUSE
+		SELECT name, cname
+		FROM Student
+		ORDER BY name DESC
+		
+		-- With Column heading
+		SELECT name, cname CourseName
+		FROM Student
+		ORDER BY CourseName DESC
+
+		-- With Column ordering
+		SELECT name, cname, fees 
+		FROM Student
+		ORDER BY 3 DESC
+		
+		SELECT name, cname, fees 
+		FROM Student
+		ORDER BY 3 DESC, name ASC
+
+		-- [NOT] LIKE - BEGINS WITH A
+		SELECT name 
+		FROM Student
+		WHERE name LIKE 'A%'
+		
+		SELECT name 
+		FROM Student
+		WHERE name LIKE '%A%'
+
+		SELECT name 
+		FROM Student
+		WHERE lower(name) LIKE 'A_a%'
+
+		SELECT name 
+		FROM Student
+		WHERE name like '%\_%' escape '\';
+
+		This is RAJAT, my id is 1, enrolled for JAVA course with fees 5000
+
+		-- adding new column
+		ALTER TABLE Student
+		ADD doj DATE
+
+
+		-- DUMMY DUAL TABLE
+		SELECT SYSDATE
+		FROM DUAL				
+
+		SELECT LOWER('HELLO')
+		FROM DUAL
+
+
+		-- NULL WITH ANY LITERAL
+		SELECT NULL || fees
+		FROM Student
+
+		-- this is will result null
+		SELECT NULL +  fees	
+		FROM Student
+
+		-- Group functions
+		SELECT SUM(fees), MAX(fees), MIN(fees),
+		MAX(name), MIN(name), AVG(fees)
+		MAX(doj), MIN(doj)
+		FROM Student
+		
+		SELECT COUNT(*)
+		FROM Student
+		
+		SELECT COUNT(addr)
+		FROM Student
+
+		SELECT COUNT( DISTINCT addr)
+		FROM Student
+	
+		SELECT DISTINCT COUNT(addr)
+		FROM Student
+			
+		-- GROUP BY CLAUSE
+		SELECT cname, SUM(fees) , COUNT(sid)
+		FROM Student
+		WHERE cname='Java'
+		GROUP BY CNAME
+
+
+		SELECT cname, SUM(fees) , COUNT(sid)
+		FROM Student
+		GROUP BY CNAME
+		HAVING AVG(fees)>5000
+		
+		
+
+		-- NVL FUNCTION
+		SELECT doj, NVL(doj,SYSDATE) 
+		FROM Student
+
+		SELECT address, NVL(address,'NA') 
+		FROM Student
+
+		-- decode func
+		SELECT name, cname, 
+		CASE  cname 
+		WHEN 'Java' THEN 'Grade A'
+		WHEN 'DotNet' THEN 'Grade B'
+		ElSE
+		'Grade C' END AS GRADE
+		FROM Student
+
+		SELECT name, cname, 
+		CASE   
+		WHEN cname='Java' THEN 'Grade A'
+		WHEN cname='DotNet' THEN 'Grade B'
+		ElSE
+		'Grade C' END AS GRADE
+		FROM Student
+		
+		-- DECODE
+		SELECT name, cname, 
+		DECODE(cname, 'Java','Grade A','DotNet',
+		'Grade B','Grade C')
+		FROM Student
+
+		DROP TABLE Student
+
+	-- Child Table
+	CREATE TABLE Student(
+	Sid INT,
+	Name VARCHAR(20) NOT NULL, -- Columnlevel Constraint
+	Gender char(1),
+	CID INT,
+	-- tablelevel Constraint	
+	CONSTRAINT PK_STUDENT PRIMARY KEY(Sid),  
+	CONSTRAINT Chk_Gender CHECK (Gender in ('M','F'))
+	)
+
+	-- Master Table
+	CREATE TABLE COURSE(
+	CID INT PRIMARY KEY,
+	CNAME VARCHAR(10) NOT NULL,
+	CFEES NUMBER(10,2)
+	)
+
+	ALTER TABLE STUDENT 
+	ADD CONSTRAINT FK_STUD FOREIGN KEY(CID)
+	REFERENCES COURSE (CID)
+
+
+-- TCL
+
+ INSERT INTO NEW_EMP
+  SELECT * FROM EMP
+  WHERE DEPTNO=10
+
+COMMIT
+
+SELECT * FROM NEW_EMP
+-------------------------------
+-- BEGIN TRANSACTION
+SAVEPOINT S1;
+INSERT INTO NEW_EMP VALUES
+(3,'ADITYA',2,30)
+
+SELECT * FROM NEW_EMP
+
+SAVEPOINT S2;
+UPDATE NEW_EMP
+SET MGR=1
+WHERE EMPNO=1
+SELECT * FROM NEW_EMP
+
+COMMIT
+ROLLBACK TO S2
+
+ INSERT INTO NEW_EMP
+  SELECT * FROM EMP
+  WHERE DEPTNO=10
+
+COMMIT
+
+SELECT * FROM NEW_EMP
+-------------------------------
+-- BEGIN TRANSACTION
+SAVEPOINT S1;
+INSERT INTO NEW_EMP VALUES
+(3,'ADITYA',2,30)
+
+SELECT * FROM NEW_EMP
+
+SAVEPOINT S2;
+UPDATE NEW_EMP
+SET MGR=1
+WHERE EMPNO=1
+SELECT * FROM NEW_EMP
+
+COMMIT
+ROLLBACK TO S2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		

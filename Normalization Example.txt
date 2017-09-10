@@ -1,0 +1,13 @@
+
+EmployeeDetails
+
+EID
+Name
+Address
+DOJ
+DepartmentName (IT, HR)
+Location
+ProjectTitle 
+ProjectDuration
+TeamSize
+

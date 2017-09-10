@@ -1,0 +1,18 @@
+KEY : any col/ field/ attribute using which we can identify each and every tuple (record/row) separately
+
+1. Unique key + NOT NULL
+
+2 Candidate Key (Set) + Set of all unique keys + Not null keys in table (Emp no, PAN, UID) 
+
+3 From set of candidate keys, identify such key which is closest to the domain, and that key is called as Primary key (Emp no)
+
+4 All the other keys otherthan primary from candidate set is called as Alternate Keys (PAN, UID)
+
+5 Surrogate key is primary key which is not closest to the domain but forcefully identifying this key from alternate keys.
+
+Example of 
+
+Company portfolio, from which logo can be acting as primary key but logo will be in img, it is bery difficult to process image, so we are forcefully choosing company registration number as primary key[Surrogate key]
+6 Foreign key - It will always take refernce from outside (foreign)  table for its existence
+
+7 Two or more unique keys, uniquely identifying a record is called as super key

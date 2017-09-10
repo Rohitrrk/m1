@@ -1,0 +1,12 @@
+SELECT first_name, last_name 
+FROM employees
+WHERE employee_id=&Emp_ID;
+
+SELECT first_name, &column
+FROM employees
+WHERE first_name = 'David';
+
+SELECT department_id, &&column
+FROM Employees
+WHERE department_id = 30
+order by &column;

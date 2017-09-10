@@ -1,0 +1,7 @@
+TO SEE BUILT IN TABLES, PROCEDURES, FUNCTIONS,ETC
+DATA DICTIONARY VIEWS
+-- 
+
+user_source
+user_procedures
+user_triggers

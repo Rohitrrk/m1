@@ -1,0 +1,202 @@
+/* clean up old tables;
+   must drop tables with foreign keys first
+   due to referential integrity constraints
+ */
+
+delete from depositor;
+drop table depositor;
+
+delete from borrower;
+drop table borrower;
+
+delete from account;
+drop table account;
+
+delete from branch;
+drop table branch;
+
+delete from loan;
+drop table loan;
+
+delete from customer;
+drop table customer;
+
+// Task
+
+create user CBUser identified by citibank;
+grant connect, resource to CBUser;
+
+
+
+
+create table account
+   (account_number 	varchar(15),
+    branch_name		varchar(15)	not null,
+    balance 		number		not null,
+    primary key(account_number));
+
+Desc account;
+
+
+create table branch
+   (branch_name 	varchar(15),
+    branch_city 	varchar(15)	not null,
+    assets 		number		not null,
+    primary key(branch_name));
+
+create table customer
+   (customer_name 	varchar(15),
+    customer_street 	varchar(12)	not null,
+    customer_city 	varchar(15)	not null,
+    primary key(customer_name));
+
+create table loan
+   (loan_number 	varchar(15),
+    branch_name		varchar(15)	not null,
+    amount 		number		not null,
+    primary key(loan_number));
+
+create table depositor
+   (customer_name 	varchar(15)	not null,
+    account_number 	varchar(15)	not null,
+    primary key(customer_name, account_number),
+    foreign key(account_number) references account(account_number),
+    foreign key(customer_name) references customer(customer_name));
+
+create table borrower
+   (customer_name 	varchar(15)	not null,
+    loan_number 	varchar(15)	not null,
+    primary key(customer_name, loan_number),
+    foreign key(customer_name) references customer(customer_name),
+    foreign key(loan_number) references loan(loan_number));
+
+/* populate relations */
+
+insert into customer	values ('Jones',	'Main',		'Harrison');
+insert into customer	values ('&custname','&Street','&City');
+
+insert into customer	values ('Smith',	'Main',		'Rye');
+insert into customer	values ('Hayes',	'Main',		'Harrison');
+insert into customer	values ('Curry',	'North',	'Rye');
+insert into customer	values ('Lindsay',	'Park',		'Pittsfield');
+insert into customer	values ('Turner',	'Putnam',	'Stamford');
+insert into customer	values ('Williams',	'Nassau',	'Princeton');
+insert into customer	values ('Adams',	'Spring',	'Pittsfield');
+insert into customer	values ('Johnson',	'Alma',		'Palo Alto');
+insert into customer	values ('Glenn',	'Sand Hill',	'Woodside');
+insert into customer	values ('Brooks',	'Senator',	'Brooklyn');
+insert into customer	values ('Green',	'Walnut',	'Stamford');
+insert into customer	values ('Jackson',	'University',	'Salt Lake');
+insert into customer	values ('Majeris',	'First',	'Rye');
+insert into customer	values ('McBride',	'Safety',	'Rye');
+
+insert into branch	values ('Downtown',	'Brooklyn',	 900000);
+insert into branch	values ('Redwood',	'Palo Alto',	2100000);
+insert into branch	values ('Perryridge',	'Horseneck',	1700000);
+insert into branch	values ('Mianus',	'Horseneck',	 400200);
+insert into branch	values ('Round Hill',	'Horseneck',	8000000);
+insert into branch	values ('Pownal',	'Bennington',	 400000);
+insert into branch	values ('North Town',	'Rye',		3700000);
+insert into branch	values ('Brighton',	'Brooklyn',	7000000);
+insert into branch	values ('Central',	'Rye',		 400280);
+
+insert into account	values ('A-101',	'Downtown',	500);
+insert into account	values ('A-215',	'Mianus',	700);
+insert into account	values ('A-102',	'Perryridge',	400);
+insert into account	values ('A-305',	'Round Hill',	350);
+insert into account	values ('A-201',	'Perryridge',	900);
+insert into account	values ('A-222',	'Redwood',	700);
+insert into account	values ('A-217',	'Brighton',	750);
+insert into account	values ('A-333',	'Central',	850);
+insert into account	values ('A-444',	'North Town',	625);
+
+insert into depositor values ('Johnson','A-101');
+insert into depositor values ('Smith',	'A-215');
+insert into depositor values ('Hayes',	'A-102');
+insert into depositor values ('Hayes',	'A-101');
+insert into depositor values ('Turner',	'A-305');
+insert into depositor values ('Johnson','A-201');
+insert into depositor values ('Jones',	'A-217');
+insert into depositor values ('Lindsay','A-222');
+insert into depositor values ('Majeris','A-333');
+insert into depositor values ('Smith',	'A-444');
+
+insert into loan	values ('L-17',		'Downtown',	1000);
+insert into loan	values ('L-23',		'Redwood',	2000);
+insert into loan	values ('L-15',		'Perryridge',	1500);
+insert into loan	values ('L-14',		'Downtown',	1500);
+insert into loan	values ('L-93',		'Mianus',	500);
+insert into loan	values ('L-11',		'Round Hill',	900);
+insert into loan	values ('L-16',		'Perryridge',	1300);
+insert into loan	values ('L-20',		'North Town',	7500);
+insert into loan	values ('L-21',		'Central',	570);
+
+insert into borrower values ('Jones',	'L-17');
+insert into borrower values ('Smith',	'L-23');
+insert into borrower values ('Hayes',	'L-15');
+insert into borrower values ('Jackson',	'L-14');
+insert into borrower values ('Curry',	'L-93');
+insert into borrower values ('Smith',	'L-11');
+insert into borrower values ('Williams','L-17');
+insert into borrower values ('Adams',	'L-16');
+insert into borrower values ('McBride',	'L-20');
+insert into borrower values ('Smith',	'L-21');
+
+Transaction Example...
+----------------------------------------
+-- Select * from Customers;
+
+Insert Query
+
+-- Commit;
+
+Savepoint S1;
+
+Insert
+Update
+
+Rollback S1;
+--------------------------------------
+delete from
+customer
+where cust_name='';
+
+BEGIN -- PLSQL Block
+    FOR v_Count IN 1..5 LOOP
+       INSERT INTO Customers(COL_NAME)
+       VALUES (v_count);
+    END LOOP;
+END;
+
+
+Do this Practice Now.. [Complete this in half an hour] 
+-------------------------------------------------------------------------
+create table employee ( employee_name varchar(20) not null, branch_name varchar(10) not null, salary float, primary key(employee_name,branch_name) );  
+
+1)Find all account whose balance is smaller than 5000
+select account_name from account where balance < 5000;
+
+2)Find all name of customers whose city is in Brooklyn 
+ select customer_name from customer where customer_city='Brooklyn'; 
+
+3)Find all employees whose salary is greater than 14000 and working branch is not ‘Downtown’ 
+ select * from employee where salary>14000 and branch_name<>’Downtown’; 
+
+4)Calculate the average salary of all employees and show the average salary as “avg_salary” 
+ select avg(salary) as avg_salary from employee ; 
+
+5)
+Show all account_number, branch_name and corresponding branch_city 
+ 
+select account_number, branch.branch_name, branch_city from account, branch where account.branch_name=branch.branch_name; 
+
+6. Find the names of all customers.  
+7. Find the names of all branches in the loan relation, don't display duplicates.  
+8. Display the entire Branch table.  
+9. Find the account number for all accounts where the balance is greater than Rs7000.  
+10. Find the account number and balance for all accounts from Brighton where the balance is greater than Rs.8000.  
+11. Display the branch name and assets from all branches in thousands of dollars and rename the assets column to 'assets in thousands'.  
+12. Find the name of all branches with assets between one and four million dollars.  
+13. Find the name, account number, and balance of all customers who have an account.  
+14. Find the name, account number, and balance of all customers who have an account with a balance of Rs.4000 or less.   
+select depositor.customer_name, account.account_number, balance from   depositor, account where  depositor.account_number = account.account_number and balance <= 4000 

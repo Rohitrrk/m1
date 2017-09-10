@@ -1,0 +1,8 @@
+To clear Screen
+=> cl scr;
+
+To unlock user hr
+=> alter user HR ACCOUNT unlock;
+
+Or
+=> alter user HR IDENTIFIED BY hr ACCOUNT unlock;

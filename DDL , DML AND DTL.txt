@@ -1,0 +1,126 @@
+
+
+
+1) Install JDK First
+set path for java
+C:\Program Files\Java\jdk1.7.0_51\bin
+
+2) You have to install OracleXE Express Edition
+
+3) You can click on sqldeveloper to start SqlDeveloper IDE
+
+4) Lets Interact with Oracle SQL Developer
+
+
+Select * from tab;
+
+-- Create user command
+CREATE USER myUser IDENTIFIED BY 123456
+
+-- Alter user command
+ALTER USER myUser IDENTIFIED BY hr123 
+ACCOUNT unlock;
+
+
+Data : Collect of facts
+Information : Processed data
+Management : 
+DMBSystem:
+		MS Access
+		MS Excel
+		
+RDBMS	: Relational DBMS
+		MS SQL Server, MYSQL, Sybase, DB2, etc
+
+OORDBMS : Object Oriented RDBMS
+		Oracle
+
+
+DDL
+	create, alter, drop, truncate, rename
+DML
+	insert, update, delete
+DQL	
+	select
+DTL
+	commit, rollback, savepoint
+DCL
+	grant, revoke
+
+
+ user_cons_columns
+ user_tab_columns 
+all_tab_columns
+user_tables
+all_tables
+
+Adding a Column 
+The following example uses ALTER TABLE to add an INTEGER column named modified_by to the Employee  table: 
+
+DESC Employee;
+ALTER TABLE Employee ADD Age INTEGER; 
+DESC Employee;
+SELECT * FROM EMPLOYEE;
+
+SELECT SYSDATE FROM DUAL;
+
+SELECT 2+4 FROM DUAL;
+ 
+'08-SEP-16'
+
+ALTER TABLE COURSE ADD STARTDATE DATE DEFAULT SYSDATE NOT NULL; 
+
+Modifying Column
+ALTER TABLE EMPLOYEE MODIFY AGE VARCHAR2(2);
+DESC EMPLOYEE;
+
+Changing the Precision of a Numeric Column
+ALTER TABLE EMPLOYEE MODIFY AGE VARCHAR2(3);
+
+Changing the Data Type of a Column
+ALTER TABLE order_status2 MODIFY status CHAR(15); 
+
+Dropping a Column 
+ALTER TABLE EMPLOYEE DROP COLUMN AGE; 
+
+Adding a CHECK Constraint 
+ALTER TABLE EMPLOYEE ADD GENDER CHAR(1);
+
+ALTER TABLE EMPLOYEE ADD CONSTRAINT GENDER_chk CHECK (GENDER IN ('M', 'F')); 
+
+Drop Constraint
+ALTER TABLE EMPLOYEE DROP CONSTRAINT GENDER_chk; 
+
+Disable
+ALTER TABLE EMPLOYEE DISABLE CONSTRAINT GENDER_chk; 
+
+Enable
+ALTER TABLE EMPLOYEE ENABLE CONSTRAINT GENDER_chk; 
+
+Disabling a Constraint 
+ALTER TABLE EMPLOYEE ADD CONSTRAINT order_status2_status_uq UNIQUE (status) DISABLE; 
+
+
+Enable
+ALTER TABLE order_status2 ENABLE CONSTRAINT order_status2_status_uq;
+
+You can apply a constraint to new data only by specifying ENABLE NOVALIDATE; 
+
+for example: ALTER TABLE order_status2 ENABLE NOVALIDATE CONSTRAINT order_status2_status_uq;
+
+NOTE The default is ENABLE VALIDATE, which means existing rows must pass the constraint check.
+
+Rename Table
+RENAME customers TO customer_table;
+
+
+
+
+
+
+
+
+
+
+
+
