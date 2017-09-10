@@ -1,0 +1,43 @@
+dbo is the default schema
+
+
+What is schema OR user ?
+	It is a way to logically group database objects such as tables, views, stored procedures, etc.
+	It is like a container of objects..
+
+Employee		Table
+
+Attributes/Columns
+
+EID		int 		P.K	identity
+Name		varchar(30)	not null
+Desig		varchar(20)	null
+Salary		float		null
+
+
+Types of SQL statements
+-------------------------
+DQL-Data Query Language, commands used to get data from the database and impose ordering upon it.
+
+DML-Data Manipulation Language, commands allow the users move data into and out of a database and also modify the data in the database.
+
+DDL-Data Definition Language, is used to create, alter and delete database object.
+
+DCL-Data Control Language, consists of commands that control the user access to the database object.
+
+TCL-Transaction Control Language, commands allow the users to control transactions.
+
+
+SHORT NOTES
+----------------
+DQL -  Select - Gives different views of data
+
+DML -  insert, update and delete, merge	- deals with data
+
+DDL - create, alter, drop, truncate 	- deals with structure
+
+DCL - Grant and revoke - deals with previleges
+
+TCL - begin transaction , commit, rollback, save transaction - controls transaction
+
+

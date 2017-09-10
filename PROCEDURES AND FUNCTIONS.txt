@@ -1,0 +1,169 @@
+-- CREATE & COMPILE
+CREATE PROCEDURE spDemo1
+AS
+BEGIN
+ 	DBMS_OUTPUT.PUT_LINE('Hello');
+END spDemo1;
+
+-- EXECUTE
+execute spDemo1;
+-- OR
+BEGIN
+  spDemo1;
+END;
+
+-- DATA DICTIONARY
+SELECT PROCEDURE_NAME FROM USER_PROCEDURES;
+
+-- OR
+SELECT Text FROM User_Source WHERE Name ='SPDEMO1' ORDER BY Line;
+
+-- CREATE OR REPLACE 
+CREATE OR REPLACE PROCEDURE spDemo1
+AS
+BEGIN
+ 	DBMS_OUTPUT.PUT_LINE('HelloWORLD');
+END spDemo1;
+
+execute spDemo1;
+
+-- EX
+CREATE OR REPLACE PROCEDURE spAdd
+AS
+result NUMBER;
+BEGIN
+ 	 result:=10+10;
+ 	DBMS_OUTPUT.PUT_LINE(result);
+END spAdd;
+  
+-- CALL PROCEDURE
+  exec spAdd;
+
+-- EXAMPLE WITH IF
+CREATE OR REPLACE PROCEDURE spNum(n NUMBER)
+ AS
+ num NUMBER;
+ BEGIN
+  	num:=n;
+  	IF num>0 THEN
+  	DBMS_OUTPUT.PUT_LINE('Positive NUMBER');
+  	ELSE
+  	DBMS_OUTPUT.PUT_LINE('Negative NUMBER');
+  	END IF;
+END spNum;
+
+exec spNum(2);
+
+-- PROCEDURE WITH PARAM
+CREATE OR REPLACE PROCEDURE spNum(num IN NUMBER)
+  AS
+  BEGIN
+ 	IF num>0 THEN
+ 	DBMS_OUTPUT.PUT_LINE('Positive NUMBER');
+ 	ELSE
+ 	DBMS_OUTPUT.PUT_LINE('Negative NUMBER');
+ 	END IF;
+END spNum;
+
+exec spNum(30);
+
+exec spNum(-30);
+
+-- PROCEDURE WITH OUTPUT PARAM
+
+CREATE OR REPLACE PROCEDURE spAdd(num1 IN NUMBER,num2 IN NUMBER,num3 OUT NUMBER)
+   AS
+BEGIN
+	num3:=num1+num2;
+END;
+
+-- CALLING
+DECLARE
+     result NUMBER;
+BEGIN
+     spAdd(4,5,result);
+     DBMS_OUTPUT.PUT_LINE(result);
+END;
+
+-- OR USING BIND VARIABLE
+
+VARIABLE result NUMBER;
+execute spAdd(7,3,:result);
+print result
+
+-- PROCEDURE WITH SELECT 
+CREATE OR REPLACE PROCEDURE spEmp
+    (nEmpno IN emp.empno%TYPE,
+     nSal IN OUT NUMBER)
+    AS
+    nMinSal NUMBER;
+    BEGIN
+    	SELECT min(salary) INTO nMinSal FROM emp;
+    	IF nSal<nMinSal
+    	THEN
+  		nSal:=nSal+nSal*.3;
+	ELSE
+		nSal:=nSal;
+  	END IF;
+  END spEmp;
+
+-- calling
+  DECLARE
+    	salno NUMBER;
+    BEGIN
+    	salno:=&salno;
+    	spEmp(&empno,salno);
+    	DBMS_OUTPUT.PUT_LINE(salno);
+   END;
+
+-- function
+
+ CREATE OR REPLACE FUNCTION fnLength(str VARCHAR2)
+    RETURN NUMBER
+    AS
+    len NUMBER;
+    BEGIN
+    	len:=LENGTH(str);
+    	RETURN len;
+    END fnLength;
+
+--calling
+SELECT fnLength('Test') FROM dual;
+-- or
+VARIABLE len NUMBER
+execute    :len:=fnLength('Test');
+print len
+
+-- or
+BEGIN
+    	DBMS_OUTPUT.PUT_LINE(fnLength('TEst'));
+END;
+
+CREATE OR REPLACE FUNCTION Get_Avg_Sal
+(p_deptno in number DEFAULT 20) 
+RETURN number 
+-- DECLARE SECTION
+AS V_Sal number;
+BEGIN 
+	SELECT Trunc(Avg(salary)) INTO V_Sal 
+	FROM emp 
+	WHERE deptno=P_Deptno; 
+	
+	IF v_sal is null THEN 
+		v_sal := -1 ; 
+	END IF; 
+	return v_sal; 
+EXCEPTION 
+	WHEN others THEN 
+	return -2;  --signifies any other errors 
+END get_avg_sal;
+
+
+
+
+
+
+
+
+
+
