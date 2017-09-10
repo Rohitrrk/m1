@@ -1,0 +1,35 @@
+XML - Stands for Extensible Markup Language
+
+It is inherited from SGML (Standard Markup Language)
+
+SGML is base
+1) HTML
+2) XML
+
+XAML is an application of XML
+XAML stands for Extensible Application Markup Language, for e.g: Android app dev
+
+HTML					XML
+1) Used to develop static web pages		1) Used to share data across applns
+2) Focuses on data and presentation		2) More focus on data
+3) HTML has predefined tags			3) XML has user defined tags
+4) No Self Validation			4) XML does Self Validation
+5) Not compulsory				5) Every XML doc must have 1 root 						element
+6) Not compulsory				6) All attributes must be enclosed in 
+					quotes(' ',"")
+7) Not Compulsory				7) Every tag must be closed
+8) Case insensitive				8) Case Sensitive
+9) Not Compulsory				9) Nested tags must be closed in the 						same order inwhich they are opened	
+					10) XML is neutral
+					No platform, HW, SW and Device 						dependency		
+					11) Approved W3C 
+
+3 ways to create XMLfile
+1) XmlWriter
+2) XmlTextWriter
+3) Using DataSet => WriteXml() Func
+
+3 ways to Read XmlFile
+1) XmlReader
+2) XmlTextReader
+3) Using DataSet => ReadXml() func
