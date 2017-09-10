@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Table Tag...</title>
+    <style>
+        .center{
+            text-align:center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Table Tag Example...</h1>
+
+    <table border="1" cellspacing="0" cellpadding="5">
+        <caption><h3>Student Course Details..</h3></caption>
+        <tr>
+            <th>SID</th>
+            <th>Name</th>
+            <th>Course Name</th>
+            <th>Fees</th>
+        </tr>
+        <tr>
+            <td>101</td>
+            <td>Karthik</td>
+            <td>Java</td>
+            <td>Rs.15000.00</td>
+        </tr>
+        <tr>
+            <td>102</td>
+            <td>Vishnu</td>
+            <td>Dot Net</td>
+            <td>Rs.18000.00</td>
+        </tr>
+        <tr>
+            <td>103</td>
+            <td>Manoj</td>
+            <td>SQL Server</td>
+            <td>Rs.12000.00</td>
+        </tr>
+    </table>
+    <br />
+    <br />
+
+    <table border="1" style="border-color:red">
+        <tr>
+            <th bgcolor="cyan"><font color="white">Zone</font></th>
+            <th>State</th>
+        </tr>
+        <tr>
+            <td>South</td>
+            <td>
+                <table border="1" style="border-color:green">
+                    <tr>
+                        <th>Name</th>
+                        <th>Capital City</th>
+                    </tr>
+                    <tr>
+                        <td>Karnataka</td>
+                        <td>Bangalore</td>
+                    </tr>
+                    <tr>
+                        <td>Tamilnadu</td>
+                        <td>Chennai</td>
+                    </tr>
+                    <tr>
+                        <td>Andhra Pradesh</td>
+                        <td>Hyderabad</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <br /><br />
+
+    <table border="1" cellspacing="0" cellpadding="5">
+        <tr>
+            <th>Department Name</th>
+            <th>Employee Name</th>
+            <th>Salary</th>
+        </tr>
+        <tr>
+            <td rowspan="2" bgcolor="cyan" align="center">HR</td>
+            <td>Lathika</td>
+            <td class="center">55000</td>
+        </tr>
+        <tr>
+            <td>Sandeep</td>
+            <td class="center">32000</td>
+        </tr>
+        <tr>
+            <td rowspan="3" bgcolor="cyan" align="center">Sales</td>
+            <td>Sonia</td>
+            <td class="center">43000</td>
+        </tr>
+        <tr>
+            <td>Raju</td>
+            <td class="center">30022</td>
+        </tr>
+        <tr>
+            <td>Ajay</td>
+            <td class="center">99932</td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">Total Salary</td>
+            <td class="center">2,59,954</td>
+        </tr>
+    </table>
+    <br /><br />
+
+    <table width="100%">
+        <colgroup span="3" style="background-color:orange">
+            <colgroup span="4" style="background-color:lightgreen">
+
+                <tr>
+                    <th colspan="3">Ecommerce Stream</th>
+                    <th colspan="4">Mainframe Stream</th>
+                <tr>
+                    <td>Internet/HTML
+                    <td>Javscript
+                    <td>Java
+                    <td>CICS
+                    <td>COBOL
+                    <td>JCL
+                    <td>IMS
+                <tr>
+                    <td>JSP
+                    <td>Servlet
+                    <td>Struts
+                    <td>ADS/O
+                    <td>VSAM
+                    <td>IDMS
+                    <td>MVS
+    </table>
+
+</body>
+</html>

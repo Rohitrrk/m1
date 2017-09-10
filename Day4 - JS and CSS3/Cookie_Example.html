@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Cookie Example..</title>
+    <script>
+        function setCookie(user) {
+            var d = new Date();
+            d.setTime(d.getTime() + (30 * 24 * 60 * 60 * 1000));
+            var expires = "expires=" + d.toGMTString();
+            document.cookie = "username=" + user.value + "; " + expires;
+            alert('cookie is stored in browser');
+        }
+        function DeleteCookie(name) {
+            document.cookie = name + '=; expires=Thu, 25 Feb 2016 11:12:01 GMT;';
+            alert('cookie is deleted from my browser');
+        }
+    </script>
+</head>
+<body>
+    <input type="text" name="txtusername" id="txtusername"
+           placeholder="User Name "/>
+    <input type="button" value="StoreCookie" onclick="setCookie(txtusername)"/>
+    <input type="button" value="DeleteCookie" onclick="DeleteCookie('username')" />
+</body>
+</html>
