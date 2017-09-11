@@ -1,0 +1,176 @@
+1.
+DECLARE
+emp_name Employee_Details.employee_name%TYPE;
+emp_sal number(7,2);
+
+BEGIN 
+SELECT employee_name,employee_salary INTO emp_name,emp_sal FROM Employee_Details WHERE empoyee_id = 110;
+
+
+DBMS_OUTPUT.PUT_LINE ('The Employee name is '|| emp_name);
+DBMS_OUTPUT.PUT_LINE ('The Employee salary is '|| emp_sal);
+END;
+
+
+/
+2.
+DECLARE
+nRecord Employee_Details%rowtype;
+
+BEGIN 
+SELECT * INTO nRecord FROM Employee_Details WHERE empoyee_id = 110;
+DBMS_OUTPUT.PUT_LINE('DETAILS ' || nREcord.Employee_name || nRecord.employee_salary || nRecord.dept_no); 
+
+END;
+
+
+/
+
+DECLARE
+TYPE recname is RECORD ( emp_id number(3), emp_name varchar2(20));
+var_rec recname;
+
+BEGIN 
+select empoyee_id, employee_name into var_rec.emp_id, var_rec.emp_name 
+from Employee_Details where empoyee_id = 110;
+DBMS_OUTPUT.PUT_LINE('Details' || var_rec.emp_id ||' ' || var_rec.emp_name); 
+
+END;
+
+
+/
+
+DECLARE
+CURSOR emp_cur is 
+ SELECT empoyee_id, employee_name,employee_salary, dept_no From Employee_Details;
+ emp_rec emp_cur%rowtype;
+
+BEGIN 
+ OPEN emp_cur;
+ LOOP 
+     FETCH emp_cur INTO emp_rec;
+     EXIT WHEN emp_cur%notfound;
+     DBMS_OUTPUT.PUT_LINE('Details' ||' ' || emp_rec.empoyee_id ||' ' || emp_rec.employee_name || ' ' || emp_rec.employee_salary || ' ' || emp_rec.dept_no); 
+ END LOOP;
+END;
+
+
+/
+
+DECLARE
+CURSOR emp_cur is 
+ SELECT empoyee_id, employee_name,employee_salary, dept_no From Employee_Details;
+ emp_rec emp_cur%rowtype;
+
+BEGIN 
+ FOR C IN emp_cur
+ LOOP 
+   
+    DBMS_OUTPUT.PUT_LINE(c.empoyee_id || ' ' || c.employee_name || ' ' || c.dept_no); 
+
+ END LOOP;
+END;
+
+
+/
+
+
+DECLARE
+CURSOR emp_cur is 
+ SELECT empoyee_id, employee_name,employee_salary, dept_no From Employee_Details;
+ emp_rec emp_cur%rowtype;
+
+BEGIN 
+ OPEN emp_cur;
+ FETCH emp_cur INTO emp_rec;
+  WHILE(emp_cur%found)
+ LOOP
+     FETCH emp_cur INTO emp_rec;
+    
+     DBMS_OUTPUT.PUT_LINE('Details' ||' ' || emp_rec.empoyee_id ||' ' || emp_rec.employee_name || ' ' || emp_rec.employee_salary || ' ' || emp_rec.dept_no); 
+ END LOOP;
+END;
+
+
+/
+
+CALLING PROCEDURE:method 1:
+ 
+BEGIN 
+     rk('&emp_name',&emp_id);
+     
+END;
+/
+CALLING PROCEDURE:method 1:
+
+
+CREATE OR REPLACE PROCEDURE find_emp(  e_id in Employee_Details.empoyee_id%TYPE, e_name out Employee_Details.employee_name%TYPE)
+is
+begin
+     select Employee_name into e_name from Employee_Details
+     where empoyee_id = e_id;
+end find_emp;
+/
+
+
+FUNCTION :
+
+CREATE OR REPLACE FUNCTION Emplo(e_id IN Employee_Details.empoyee_id%TYPE,
+                                 e_name IN Employee_Details.employee_name%TYPE,
+                                 e_add IN Employee_Details.employee_address%TYPE,
+                                 e_dept Employee_Details.dept_no%TYPE,
+                                 e_sal Employee_Details.employee_salary%TYPE,
+                                 e_mob Employee_Details.employee_mob_no%TYPE)
+ RETURN NUMBER
+IS 
+begin
+   INSERT INTO Employee_Details VALUES(e_id, e_name, e_add, e_dept, e_sal, e_mob);
+   COMMIT;
+   RETURN 1;
+   EXCEPTION WHEN OTHERS THEN
+RETURN 0;
+end Emplo;
+/
+
+
+
+CREATE OR REPLACE PROCEDURE find_emp(  e_id in Employee_Details.empoyee_id%TYPE, e_name out Employee_Details.employee_name%TYPE)
+is
+begin
+ 
+     select Employee_name into e_name from Employee_Details
+     where empoyee_id = e_id;
+EXCEPTION 
+WHEN NO_DATA_FOUND THEN
+DBMS_OUTPUT.PUT_LINE('Please enter valid Emp.no');
+end find_emp;
+/
+
+
+
+CREATE OR REPLACE PROCEDURE find_emp(  e_id in Employee_Details.empoyee_id%TYPE, e_name out Employee_Details.employee_name%TYPE)
+is
+negative_num EXCEPTION;
+begin
+   IF(e_id <= 0) THEN
+               RAISE negative_num;
+
+ ELSE
+     select Employee_name into e_name from Employee_Details
+     where empoyee_id = e_id;
+END IF;
+
+EXCEPTION 
+WHEN negative_num THEN 
+DBMS_OUTPUT.PUT_LINE('EMP_NO MUST NOT BE NEGATIVE');
+WHEN NO_DATA_FOUND THEN
+DBMS_OUTPUT.PUT_LINE('Please enter valid Emp.no');
+WHEN OTHERS THEN
+DBMS_OUTPUT.PUT_LINE('ERROR');
+end find_emp;
+/
+
+
+
+
+
