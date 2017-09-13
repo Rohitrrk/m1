@@ -1,0 +1,71 @@
+ //// LAB 2
+2.1
+ Class name: courses
+ATTRIBUTES:  course_code
+             course_name
+             course_duration
+			 section
+ 
+		    
+class name :section
+          
+ATTRIBUTES :Section_id
+			section_name
+			prof_id
+			coures_code
+
+            
+class name: Professor
+   
+Attributes :prof_id
+			prof_name
+			prof_exp
+			prof_qualification
+			
+class name : student
+
+Attributes : student_id
+             student_name
+			 test_type
+			 marks
+			 
+class marks
+
+
+class test 
+
+
+class pre_requiste, mid_level,semester
+
+Attributes : Theory
+             practicals
+			
+2.2
+CLASS - DATE
+ATTRIBUTES- DAY
+			MONTH
+			YEAR
+			
+METHODS-
+        ACCEPT (DAY,MONTH,YEAR)
+		DISPALY IN AMERICAN FORMAT (mm/dd/yyyy)
+		DISPALY IN BRITISH FORMAT (dd/mm/yyyy)
+		DISPALY IN JAPANASE FORMAT (dd.mm.yyyy)
+		
+		DISPLAY DAY
+		DISPLAY MONTH
+		DISPALY YEAR
+        ADD AND SUBTRACT DAYS
+	    COMPARE TWO DATES
+		
+2.3
+   CLASS  MATRIX
+  
+   MATRIX [10][10]
+ 
+  OBJECTS-   ADD MATRIX
+			 READ MATRIX
+			 PRINT MATRIX
+
+			 
+	

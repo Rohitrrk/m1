@@ -1,0 +1,38 @@
+ /**********************
+   *FILE               :ASSIGNMENT1.5.txt
+   *AUTHOR NAME        :ROHIT KANOJIA
+   *DESCRIPTION        :Write a pseudo code to convert a binary number to decimal. 
+   *VERSION            :2.0
+   *LAST MODIFIED      :22/08/2017
+   *CHANGE DESCRIPTION :
+   ************************/
+BEGIN
+     DECLARE Binary As INTEGER ARRAY
+     DECLARE product, decimal, index1, index2, flag as integer
+     Initialize decimal as 0
+     DISPLAY " enter the binary number"
+     for index1=0 TO 8
+	 
+	 IF(binary[index1]==0) or (binary[index1]==1)
+	 flag=0
+     
+     else
+     flag=1
+     exit
+     end if
+  end for 
+   if(flag==0)
+   
+  for index1=0 TO 8 
+  product = 1
+      
+   for index2=0 TO 8-i 
+    CALCULATE product = product* 2
+    END For
+   CALCULATE decimal=decimal+binary[index1]*product
+    end for 
+    display " Decimal number is",decimal
+	 else
+	 end if 
+	 end
+   end sub 	

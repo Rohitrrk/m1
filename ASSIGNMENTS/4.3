@@ -1,0 +1,68 @@
+/**********************
+   *FILE               :ASSIGNMENT 4.3 TXT
+   *AUTHOR NAME        :ROHIT KANOJIA
+   *DESCRIPTION        :4.3	Modify the below Pseudocode to implement good programming practices and take care of necessary validations to avoid exceptional scenarios. 
+                         The below Pseudocode is used to calculate total price of a product including tax.
+
+   *VERSION            :3.0
+   *LAST MODIFIED      :22/08/2017
+   *CHANGE DESCRIPTION :
+   
+
+   *****************************/
+     BEGIN 
+	 DECLARE CONSTANT TAX_RATE = 56.0
+	 DECLARE product_price AS DECIMAL
+	 DECLARE total_cost As DECIMAL
+	  
+	 PRINT " Enter price of your product"
+	 ACCEPT product_price
+	      validateInputEmpId(product_price)
+		      exception 
+			      WHEN InvalidInput_Exception THEN
+				      PRINT errorMessage
+					      Log errorMessage  in Log file 
+		    PRINT " ENTER Quantity of Product"
+			 accept quantity
+			   validateInput(quantity)
+		      exception 
+			      WHEN Invalidation_Exception THEN
+				      PRINT errorMessage
+					      Log errorMessage  in Log file
+						  
+						      
+			total_cost = calculateTotalCost(product_price, TAX_RATE)
+			
+		PRINT " TOTAL PRICE OF PRODUCT IS : " +total_cost
+	end
+/**************************** 
+   * MODULE NAME              : validateInput(DECIMAL data)
+   *INPUT PARAMETER           : decimal
+   *RETURN TYPE               : exception
+   *AUTHOR                    : ROHIT KANOJIA
+   *CREATION DATE             : 22/08/2017
+   *DESCRIPTION               : 
+*************************************/		
+ SUB validateInput(decimal data)
+      IF(! isDigits(data)) THEN
+	      RAISE Invalidinput_Exception " Input must be positive"
+	  end if
+END SUB
+
+
+ 
+/**************************** 
+   * MODULE NAME              : validateInput(DECIMAL data)
+   *INPUT PARAMETER           : decimal
+   *RETURN TYPE               : exception
+   *AUTHOR                    : ROHIT KANOJIA
+   *CREATION DATE             : 22/08/2017
+   *DESCRIPTION               : 
+*************************************/		
+ 
+   DECIMAL SUB calculateTotalCost(DECIMAL product_price, Integer Quantity, Decimal TAX_RATE)
+       DECLARE TOTAL_COST AS DECIMAL
+	   toata_cost = product_price * TAX_RATE
+	   RETURN TOTAL_COST
+ END SUB
+ 

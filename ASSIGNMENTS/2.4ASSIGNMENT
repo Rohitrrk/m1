@@ -1,0 +1,47 @@
+/*******************
+   *FILE               :ASSIGNMENT1.2.txt USING SUBROUTINE
+   *AUTHOR NAME        :ROHIT KANOJIA
+   *DESCRIPTION        :PROGRAM TO FIND YEAR OF EXPERIENCE
+   *VERSION            :3.0
+   *LAST MODIFIED      :22/08/2017
+   *CHANGE DESCRIPTION :
+************************/
+
+
+
+  RECORD Employee
+	DECLARE EmpId as INTEGER
+	DECLARE employmentType AS STRING
+END RECORD
+
+BEGIN
+       		DECLARE emp AS Employee			//leaves variable is used to store number of leaves per month
+			DECLARE No_Of_Employee AS INTEGER
+			DECLARE PERMANENT_LEAVE,CONTRACT_LEAVE AS INTEGER 
+			INITIALIZE PERMANENT_LEAVE=2
+			INITIALIZE CONTRACT_LEAVE=1
+			DECLARE MONTH AS INTEGER
+			INITIALIZE MONTH TO 12
+			
+			PROMPT "NO OF EMPLOYEES" AND STORE IN No_Of_Employee
+		    DECLARE leaves, TotalLeaves AS INTEGER
+		    FOR index= 1 to No_Of_Employee
+                PROMPT "Enter the EmployeeId" AND STORE IN emp.EmpId
+                PROMPT "Enter the employmentType" AND STORE IN emp.employmentType
+			
+             END FOR
+ 	    FOR index= 1 to No_Of_Employee
+			IF(employmentType=='PERMANENT') THEN
+			
+				TotalLeaves=PERMANENT_LEAVE*12;
+			ELSE IF(employmentType=='CONTRACT') THEN
+			
+				TotalLeaves=CONTRACT_LEAVE*12
+			END IF
+                		PRINT "Employee Id :" , emp.EmpId
+	                                 PRINT "Total Available Leaves are :", TotalLeaves
+		END FOR
+		
+END
+
+

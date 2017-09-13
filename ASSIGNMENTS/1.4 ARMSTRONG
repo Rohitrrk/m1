@@ -1,0 +1,36 @@
+
+
+
+ /**********************
+   *FILE               :ASSIGNMENT1.4.txt
+   *AUTHOR NAME        :ROHIT KANOJIA
+   *DESCRIPTION        :PROGRAM TO FIND ARMSTRONG NUMBER
+   *VERSION            :2.0
+   *LAST MODIFIED      :22/08/2017
+   *CHANGE DESCRIPTION :
+   ************************/
+   BEGIN
+   
+   DECLARE NUM,TEMP,ARMNUMBER    AS INTEGER
+   
+   INITIALIZE ARMNUMBER TO 0
+   
+   PROMPT"ENTER THE NUMBER" AND STORE IN NUM
+   
+   WHILE( NUM > 0)
+       TEMP  =  NUM%10
+	   ARMNUMBER=ARMNUMBER+TEMP*TEMP*TEMP
+	   NUM=NUM/10
+	   
+	   END WHILE
+	      IF(ARMNUMBER==NUM) THEN
+	        DISPALY " GIVEN NUMBER IS ARMSTRONG"
+		   ELSE 
+		   DISPALY " GIVEN NUMBER IS NOT ARMSTRONG"
+		   END IF
+END	   
+	   
+   
+   
+   
+   

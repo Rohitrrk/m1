@@ -1,0 +1,68 @@
+//WITH SUBROUTINE
+ /*******************
+   *FILE               :ASSIGNMENT1.2.txt USING SUBROUTINE
+   *AUTHOR NAME        :ROHIT KANOJIA
+   *DESCRIPTION        :PROGRAM TO FIND YEAR OF EXPERIENCE
+   *VERSION            :3.0
+   *LAST MODIFIED      :22/08/2017
+   *CHANGE DESCRIPTION :
+************************/
+
+   BEGIN
+     
+	 
+     DECLARE YEAR,  AS DECIMAL
+	 DECLARE Valid_Year as INTEGER
+	 DECLARE TAGCOLOR AS STRING
+	 PROMPT "ENTER THE YEAR OF EXPERIENCES" AND STORE IN YEAR
+	 ISValid_Year(YEAR)
+	 IF(ISValidYear) THEN
+	 
+	 TagColor=TAG_COLOR(YEAR)
+	 DISPLAY "TAG COLOR IS:",TagColor
+     ELSE 
+    DISPLAY "ENTER VALID YEAR"	 
+	 
+	 
+	 END
+	 
+	 /*******************
+   *FILE               :ASSIGNMENT1.2.txt USING SUBROUTINe
+   *AUTHOR NAME        :ROHIT KANOJIA
+   *DESCRIPTION        :subroutine TO FIND YEAR OF EXPERIENCE
+   *VERSION            :3.0
+   *LAST MODIFIED      :22/08/2017
+   *CHANGE DESCRIPTION :
+************************/
+	 
+	 
+	 
+	 STRING SUB TAG_COLOR(DECIMAL YEAR)
+	    DECLARE TAGCOLOR AS STRING
+	    
+		IF(YEAR<0) AND (YEAR>50)
+	       DISPLAY "INVALID YEAR"
+
+	       ELSE IF(YEAR<3)
+	       TAGCOLOR="BLUE"
+
+	       ELSE IF(YEAR<5)
+	   
+	       TAGCOLOR="GREY"
+
+	       ELSE IF(YEAR<10)
+	       TAGCOLOR="YELLOW"
+	       ELSE
+	       TAGCOLOR="RED"
+	       END IF
+	       RETURN TAGCOLOR
+	   
+	 END 
+	 BOOLEAN SUB ISValidYear(YEAR)
+	 IF(YEAR<0 AND YEAR>50)
+	     RETURN TRUE
+		 ELSE 
+		 RETURN FALSE
+	 
+	 
+	 ENDSUB

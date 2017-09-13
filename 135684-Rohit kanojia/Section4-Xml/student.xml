@@ -1,0 +1,50 @@
+<StudentInfo>
+     <Student studno="1001">
+	       <studName>Rahul</studName>
+		   <phone>2456789</phone>
+		   <Address>Mumbai</Address>
+		   <Deptno>10</Deptno>
+		 </Student>
+	  <Student studno="1002">
+	       <studName>Sanjay</studName>
+		   <phone>2678923</phone>
+		   <Address>Pune</Address>
+		   <Deptno>20</Deptno>
+		 </Student>
+		 
+	  <Student studno="1003">
+	       <studName>Ritesh</studName>
+		   <phone>2456561</phone>
+		   <Address>Mumbai</Address>
+		   <Deptno>30</Deptno>
+		 </Student>
+		 
+		 
+	<Student studno="1004">
+	       <studName>sai</studName>
+		   <phone>2565758</phone>
+		   <Address>Bangalore</Address>
+		   <Deptno>10</Deptno>
+		 </Student>
+		 
+		 
+		<Student studno="1005">
+	       <studName>Ravi</studName>
+		   <phone>245456</phone>
+		   <Address>Chennai</Address>
+		   <Deptno>30</Deptno>
+		 </Student>
+		 
+		 <Student studno="1006">
+	       <studName>Kalai</studName>
+		   <phone>2454456</phone>
+		   <Address>Chennai</Address>
+		   <Deptno>30</Deptno>
+		 </Student>
+		 <Student studno="1007">
+	       <studName>Sonal</studName>
+		   <phone>2454564</phone>
+		   <Address>Mumbai</Address>
+		   <Deptno>20</Deptno>
+		 </Student>
+</StudentInfo>

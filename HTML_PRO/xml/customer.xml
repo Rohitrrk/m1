@@ -1,0 +1,26 @@
+<CustomerInfo>
+        <Customer id='101'>     <!--Child Element1-->
+		<Name>Rohit</Name>
+		  <pname>Pen</pname>
+		  <qty>10</qty>
+		  <price>60</price>
+		  <total>700</total>
+		  </Customer>
+		  
+		  <Customer id='102'>     <!--Child Element1-->
+		<Name>harsh</Name>
+		  <pname>Pencil</pname>
+		  <qty>10</qty>
+		  <price>80</price>
+		  <total>700</total>
+		  </Customer>
+		  
+		  
+		  <Customer id='103'>     <!--Child Element1-->
+		  <Name>Jitu</Name>
+		  <pname>Eraser</pname>
+		  <qty>10</qty>
+		  <price>70</price>
+		  <total>700</total>
+		  </Customer>
+</CustomerInfo>

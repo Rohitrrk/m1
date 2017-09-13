@@ -1,0 +1,156 @@
+
+/*********************************************************************
+ * File                 		 : ATM SYSTEM.txt
+ * Author Name         	         : ROHIT KANOJIA
+ * Desc                 		 : Program TO PERFORM WITHDRAW FUNCTIONALITY FOR ATM SYSTEM.
+ * Version              		 : 1.0
+ * Last Modified Date   	     : 12-SEPT-2017
+ * Change Description   	     : 
+ *********************************************************************/
+
+ 
+ /*********************************************************************
+	Creating CUSTOMER_DETAILS Record To STORE  ACCOUNT_NO, CUSTOMER_NAME, CURRENTBALANCE,  WITHDRAW_AMOUNT
+ *********************************************************************/
+ RECORD CUSTOMER_DETAILS
+      DECLARE ACCOUNT_NO AS INTEGER
+	  DECLARE CUSTOMER_NAME AS STRING
+	  DECLARE CURRENTBALANCE AS INTEGER
+	  DECLARE WITHDRAW_AMOUNT AS INTEGER
+END RECORD
+
+
+/*********************************************************************
+	Creating ACCOUNT Object and Calling Other Modules
+ *********************************************************************/
+BEGIN
+
+   DECLARE account AS CUSTOMER_DETAILS
+   DECLARE RESULT AS INTEGER
+   PROMPT"Enter account number" AND STORE IN account.ACCOUNT_NO
+   
+      IF isValid(account.ACCOUNT_NO) THEN
+	  
+	     IFcheckAccount(account.ACCOUNT_NO)THEN
+		 
+		     PROMPT"Enter customer name" AND STORE IN account.CUSTOMER_NAME
+			 
+			   IF isvalidName(account.CUSTOMER_NAME) THEN
+			     
+			       PROMPT"Enter Currentbalance" AND STORE IN account.CURRENTBALANCE
+				     
+					  IFValid(account.CURRENTBALANCE) THEN
+					
+					     PROMPT"Enter AMOUNT TO BE WITHDRAWN" AND STORE IN account.WITHDRAW_AMOUNT 
+			          
+					       RESULT=Checkbalance(account.CURRENTBALANCE,account.WITHDRAW_AMOUNT ) 
+						  
+						    DISPALY ("PROCEEDING FOR TRANSACTION")
+					 
+		            
+		              ELSE 
+					     DISPLAY "Current balance should contain only digits"
+					
+				ELSE 
+					 DISPLAY"IN VALID NAME"
+					   
+				EXCEPTION
+				   WHEN NoSuchAccountNo THEN
+				   PRINT  errorMessage And  Log into Logfile
+				   
+				   WHEN InsufficientBalance THEN
+				   PRINT errorMessage And Log into Logfile
+					
+		 
+	END	 
+		 
+		 
+/*********************************************************************
+* Module Name         	    : isValid()
+* Input Parameters    	    : input
+* Return Type         		: BOOLEAN
+* Author              		: ROHIT KANOJIA
+* Creation Date       		: 12-SEP-2017
+* Description         		: Checking for Valid ACCOUNT NUMBER Or empSalary
+ *********************************************************************/
+SUB isValid(input)
+	IF isDigit(input) THEN
+		RETURN true
+	ELSE
+		RETURN false
+	END IF
+END SUB
+		 
+		 
+/*********************************************************************
+* Module Name         	    : check()
+* Input Parameters    	    : ACCOUNT_NO
+* Return Type         		: INTEGER
+* Author              		: ROHIT KANOJIA
+* Creation Date       		: 12-SEP-2017
+* Description         		: Checking ACCOUNT_NO already exist or not
+ *********************************************************************/
+
+SUB checkAccount(ACCOUNT_NO)
+	IF accountFound(ACCOUNT_NO)	THEN
+		RETURN true		
+	ELSE
+		RAISE NoSuchAccountNo("Account number  does not exist")
+	END IF
+
+	EXCEPTION
+		WHEN NoSuchAccountNo THEN
+		PRINT errorMessage			
+END SUB
+		 
+		 
+/*********************************************************************
+* Module Name         	    : check()
+* Input Parameters    	    : CURRENTBALANCE,WITHDRAW_AMOUNT
+* Return Type         		: INTEGER
+* Author              		: ROHIT KANOJIA
+* Creation Date       		: 12-SEP-2017
+* Description         		: Checking WITHDRAW_AMOUNT IS LESS THAN Currentbalance
+ *********************************************************************/
+SUB Checkbalance(CURRENTBALANCE,WITHDRAW_AMOUNT )
+ IF(CURRENTBALANCE > WITHDRAW_AMOUNT) THEN
+     RETURN TRUE
+ ELSE 
+    RAISE InsufficientBalance DISPLAY "INSUFFICIENT BALANCE"
+	EXCEPTION
+		WHEN InsufficientBalance THEN
+		PRINT errorMessage	
+END SUB
+		 
+--------------------------------------------------------------------------------------------------------------------------------		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 		 
+
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+
+
+
+
+
+   
+   

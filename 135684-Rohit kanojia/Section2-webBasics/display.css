@@ -1,0 +1,21 @@
+input {
+			
+				font-size:15px;
+				
+			}
+			.right
+			{
+			text-align:right;
+			font-weight:bold;
+			
+			}
+			.btn{
+			background-color:black;
+			color:white;
+			
+			}
+			h1{
+				text-align:center;
+				background-color:black;
+				color:white;
+			}

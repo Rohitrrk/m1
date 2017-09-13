@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+<xs:element name="StudentInfo">
+
+   <xs:complexType>
+      <xs:sequence>
+          <xs:element name='Student'  type="StudentType" minOccurs="0" maxOccurs="20"/>
+       </xs:sequence>
+	   </xs:complexType>
+	   </xs:element>
+
+<xs:complexType name="StudentType">
+<xs:sequence>
+ 
+     <xs:element ref="StudName" commonType />
+	 <xs:element ref="phone"/>
+	 <xs:element ref="Address"/>
+	 <xs:element ref="Deptno" />
+
+	 
+ </xs:sequence>
+      <xs:attribute ref ="studno" use="optional"/>
+  </xs:complexType>
+ 
+  <xs:attribute name="studno">
+        <xs:simpleType>
+			<xs:restriction base ="xs:positiveInteger">
+			   <xs:minInclusive value="1001"/>
+			   <xs:maxInclusive value="1020"/>
+			
+			</xs:restriction>
+ </xs:simpleType>
+ 
+ 
+ </xs:attribute>
+<xs:element name="StudName">
+   <xs:simpleType>
+   <xs:restriction base="xs:string">
+  <xs:pattern value="[a-zA-Z]{3,20}"/>
+  </xs:simpleType>
+  </xs:element>
+  <xs:element name="phone">
+     <xs:simpleType>
+	 <xs:restriction base="xs:string"/>
+	  <xs:pattern[0-9]{7} />
+			 
+
+	 </xs:simpleType>
+	 </xs:element>
+  
+ <xs:element name="Address">
+     <xs:simpleType>
+	 <xs:restriction base="xs:string">
+	 </xs:restriction>
+
+	 
+	 </xs:simpleType>
+	  </xs:element>
+	  
+	  
+	  
+	 <xs:element name="Deptno">
+     <xs:simpleType>
+   <xs:simpleType>
+   <xs:restriction base="xs:string">
+  <xs:enumeration value="10"></xs:enumeration> 
+  <xs:enumeration value="20"></xs:enumeration> 
+  <xs:enumeration value="30"></xs:enumeration> 
+  
+  
+  </xs:restriction>
+  </xs:simpleType>
+  </xs:element>
+			   <xs:maxInclusive value="30"/>
+
+	 </xs:simpleType>
+	 </xs:element>
+</xs:schema>

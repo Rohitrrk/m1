@@ -1,0 +1,46 @@
+BEGIN
+    DECLARE first_string,second_string AS STRING
+	PROMPT "Enter First string :" AND STOREIN IN first_string
+	PROMPT "Enter second string :" AND STOREIN IN second_string
+	if(isSubstring(first_string,second_string))
+	  THEN 
+      DISPLAY"Second String  is Sub String of First String of first string"
+	Else
+    display "Second string is not Sub string of first string"
+    END IF
+END
+
+BOOLEAN SUB isSubstring(STRING first_string,STRING second_string)
+    DECLARE index AS INTEGER
+	INITIALIZE index = 0
+    while(first_string[index] NOT EQAUL TO NULL)
+	  DO
+	  IF(first_string[index] == second_string[0])
+	  THEN
+	    IF(isSequence(First_string,second_string,index)
+		    THEN
+			RETURN TRUE
+			END IF
+		END IF
+	END IF
+    index = index + 1
+    END WHILE
+	
+	RETURN FALSE
+ END SUB
+ 
+ BOOLEAN SUB isINSequence(STRING Second_string,String First_string,INTEGER oldIndex)
+  
+  DECLARE index AS INTEGER
+      WHILE(second_string[index] IS NOT NULL)
+	    DO 
+		IF (Second_string[INDEX] IS NOT EQUAL TO first_string[oldIndex])
+		RETURN FALSE
+		END IF
+	    END WHILE
+    RETURN TRUE
+END SUB	
+	  
+
+	
+	   

@@ -1,0 +1,48 @@
+Class name: courses
+ATTRIBUTES:  course_code
+             course_name
+             course_duration
+			 section
+            
+objects : location, Discrete mathematics,Database&Information System
+           islamic History
+		    
+class name :section
+          
+ATTRIBUTES :Section_id
+			section_name
+			prof_id
+			coures_code
+objects : (For course Discrete mathematics) :graph theory
+          (For course information sysytems) :ORDMS,OLAP,Distributed system
+            
+class name: Professor
+   
+Attributes :prof_id
+			prof_name
+			prof_exp
+			prof_qualification
+			
+class name : student
+
+Attributes : student_id
+             student_name
+			 test_type
+			 marks
+			 
+class marks
+objects : grades
+
+class test 
+objects : pre_reqiste, mid_level,semester
+
+class pre_requiste, mid_level,semester
+
+Attributes : Theory
+             practicals
+			 
+			 
+			 
+			 
+1.2 
+   Discrete mathematics is not calss it is object. course  is class .

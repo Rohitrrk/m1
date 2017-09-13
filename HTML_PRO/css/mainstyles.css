@@ -1,0 +1,17 @@
+/* universal selector*/
+		   *{ 
+		      font_family:Segoe UI;
+			  color:green;
+			font-style:bold; 
+		   }
+		   
+		   td
+		   {
+		   text-align:center;
+		   background-color:red;
+		   color:blue;
+		   }
+h1{
+background-color:cyan;
+		   color:red;
+}

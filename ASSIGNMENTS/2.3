@@ -1,0 +1,51 @@
+/***************************************************************
+   *FILE               :ASSIGNMENT 2.3. USING SUBROUTINE
+   *AUTHOR NAME        :ROHIT KANOJIA
+   *DESCRIPTION        :Write a module in pseudo code to accept an array with 10 numbers and return number of unique values in an array
+   *VERSION            :3.0
+   *LAST MODIFIED      :27/08/2017
+   *CHANGE DESCRIPTION :
+********************************************************************/
+BEGIN 
+DECLARE  element[10] as INTEGER ARRAY
+DECLARE COUNT AS INTEGER
+
+DISPALY " Enter element of Array"
+      FOR index 0 to 9
+	       ACCEPT element[index]
+	  END FOR
+
+count = getUniqueCount(element[])
+     dispaly " Number of unique elements are "+count
+END
+  
+
+  /**************************** 
+   * MODULE NAME              :  getUniqueCount(element[]) AS INTEGER ARRAY
+   *INPUT PARAMETER           : INTEGER ARRAY
+   *RETURN TYPE               : INTEGER
+   *AUTHOR                    : ROHIT KANOJIA
+   *CREATION DATE             : 27/08/2017
+   *DESCRIPTION               :Count number of element which are unique
+*************************************/	  
+DECLARE flag AS INTEGER
+DECLARE count AS INTEGER
+INITIALIZE count = 0
+INITIALIZE flag = 0
+    
+	FOR index 0 to 9
+	FOR inner_index 0 to 9
+	     IF(index ! ==element[inner_index])
+		 flag = 1
+		 END IF
+	     END IF
+	END FOR
+	IF( flag = 0)
+	    count = count+1
+	END IF
+	
+	END FOR
+	
+RETURN count 
+ END SUB
+	

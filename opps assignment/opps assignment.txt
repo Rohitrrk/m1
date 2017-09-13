@@ -1,0 +1,109 @@
+1.
+
+Class name: courses
+ATTRIBUTES:  course_code
+             course_name
+             course_duration
+			 section
+            
+objects : location, Discrete mathematics,Database&Information System
+           islamic History
+		    
+class name :section
+          
+ATTRIBUTES :Section_id
+			section_name
+			prof_id
+			coures_code
+objects : (For course Discrete mathematics) :graph theory
+          (For course information sysytems) :ORDMS,OLAP,Distributed system
+            
+class name: Professor
+   
+Attributes :prof_id
+			prof_name
+			prof_exp
+			prof_qualification
+			
+class name : student
+
+Attributes : student_id
+             student_name
+			 test_type
+			 marks
+			 
+class marks
+objects : grades
+
+class test 
+objects : pre_reqiste, mid_level,semester
+
+class pre_requiste, mid_level,semester
+
+Attributes : Theory
+             practicals
+			 
+			 
+2.1
+University 
+
+University_name
+university_dean
+
+define_courses()
+allocate _Prof_to_courses()
+
+2.
+courses
+ 
+course_code
+course_name
+course_duration
+course_location
+
+getCoursedetails()
+setCoursedetails()
+getCoursesection()
+
+
+3.
+  section
+  section_id
+  section_name
+  prof_id
+  course_code
+  
+  getSectionDetails()
+  setCoursedetails()
+  allocateSectionToProff()
+  
+4.
+professor
+ prof_id
+ prof_name
+ prof_exp
+ prof_qualification
+ 
+ getprofDetails()
+ setProfDetails()
+ 
+5.
+student
+student_id
+student_name
+test_type
+marks
+grade
+
+setStudentdetails()
+getStudentDetail()
+calculateMarks()
+assignGrade()
+
+ 
+
+  
+  
+  
+  
+			 

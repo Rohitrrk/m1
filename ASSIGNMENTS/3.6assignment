@@ -1,0 +1,69 @@
+ /**********************
+   *FILE               :ASSIGNMENT 3.6.TXT
+   *AUTHOR NAME        :ROHIT KANOJIA
+   *DESCRIPTION        :Pseudocode to accept 5 numbers in an array and sort the array if array is not sorted 
+                        and search for a number in the array using binary search. 
+                       
+
+   *VERSION            :2.0
+   *LAST MODIFIED      :30/08/2017
+   *CHANGE DESCRIPTION :
+   ******************************************************/
+  BEGIN 
+	  DECLARE index,number_to_search,first_index,last_index AS INTEGER
+      DECLARE numbers[5] AS ARRAY INTEGER
+      INITIALIZE first_index = 0, last_index =5
+
+      acceptInput(numbers)
+      
+      sortArray(numbers)
+      
+      prompt " Enter number to search " AND STORE IN number_to_search
+	  
+	  IF( isNumberFound(numbers,number_to_search,first_index,last_index) )
+	      THEN DISPLAY "Number is present in ARRAY"
+		
+	  ELSE
+	     DISPALY "Number is not present in Array"
+
+END
+
+  /**************************** 
+   * MODULE NAME              : ACCEPT INPUT(ARRAY INTEGER numbers[ ])
+   *INPUT PARAMETER           : INTEGER ARRAY 
+   *RETURN TYPE               : VOID
+   *AUTHOR                    : ROHIT KANOJIA
+   *CREATION DATE             : 30/08/2017
+   *DESCRIPTION               :
+*************************************/	
+   SUB acceptInput(ARRAY INTEGER numbers [ ])
+        DECLARE index AS INTEGER
+		DISPLAY " Enter 5 elements of Array"
+		
+		     FOR index 0 to 4
+			 ACCEPT numbers[index]
+			 END FOR
+   END SUB
+   
+   
+   /**************************** 
+   * MODULE NAME              : sortarray(ARRAY INTEGER numbers[])
+   *INPUT PARAMETER           : INTEGER ARRAY
+   *RETURN TYPE               : VOID
+   *AUTHOR                    : ROHIT KANOJIA
+   *CREATION DATE             : 30/08/2017
+   *DESCRIPTION               :sort array elements
+*************************************/	
+
+SUB sortARRAY(ARRAY  INTEGER numbers [ ])
+    DECLARE index, innerIndex, base AS INTEGER
+    
+	     FOR index 0 to 4
+		      for innerindex 1 to 4
+			      IF(numbers[index] > numbers(innerIndex))
+				      base                = numbers(innerIndex)
+					  numbers[innerIndex] = numbers[index]
+					  numbers[index]      = base
+				END FOR
+         END FOR
+ END SUB		 

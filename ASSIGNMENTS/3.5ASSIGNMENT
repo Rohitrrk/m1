@@ -1,0 +1,46 @@
+/**********************
+   *FILE               :ASSIGNMENT 3.5 TXT
+   *AUTHOR NAME        :ROHIT KANOJIA
+   *DESCRIPTION        :Write a module in pseudo code with 2 parameters: 
+                        first parameter is a word, the second is a character. 
+						The function must return the number of times the character is found in the word. 
+
+   *VERSION            :3.0
+   *LAST MODIFIED      :22/08/2017
+   *CHANGE DESCRIPTION :
+   ******************************************************/
+   BEGIN
+       DECLARE letter as CHAR
+	   DECLARE word AS STRINGARRAY
+	   DECLARE count AS INTEGER
+	    
+	   PROMPT "Enter the word" STORE IN word
+	   PROMPT "Enter the alphabet to be searched" STORE IN letter
+	   PROMPT "Enter the alphabet to be searched " STORE IN letter
+	   
+	   occurance = getcount(letter, word)
+	   
+	   DISPLAY " The number of occurences are :", occurance
+	   
+	END
+	
+/**************************** 
+   * MODULE NAME              : getcount
+   *INPUT PARAMETER           : word,letter
+   *RETURN TYPE               : Integer
+   *AUTHOR                    : ROHIT KANOJIA
+   *CREATION DATE             : 22/08/2017
+   *DESCRIPTION               :
+*************************************/	
+    
+	 INTEGER SUB getcount(STRING ARRAY word, CHAR letter)
+	     DECLARE index to 0
+		 FOR index = 0 TO NOT EQUAL TO NULL
+		 IF word[index] == letter
+		 THEN
+		    count = count+1
+		 END IF	
+		 END FOR
+		 
+		 RETURN count
+	END SUB

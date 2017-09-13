@@ -1,0 +1,56 @@
+   
+/****************************   
+   *FILE               :ASSIGNMENT1.6
+   *AUTHOR NAME        :ROHIT KANOJIA
+   *DESCRIPTION        :PROGRAM TO FIND SMALLEST NUMBER    AND ODD EVEN NUMBER
+   *VERSION            :3.0
+   *LAST MODIFIED      :22/08/2017
+   *CHANGE DESCRIPTION :
+   ***************************/
+   
+   
+ BEGIN
+   DECLARE SIZE AS INTEGER
+   DECLARE A[SIZE],EVEN[SIZE],ODD[SIZE] AS INTEGERARRAY 
+   DECLARE Smallest_number AS INTEGER 
+   DECLARE INDEX, EVEN_INDEX, ODD_INDEX AS INTEGER
+   INITIALIZE EVEN_INDEX,ODD_INDEX TO 0
+   
+   
+   PROMPT "ENTER SIZE OF ARRAY " AND STORE IN SIZE
+   FOR INDEX 0 TO SIZE-1
+     ACCEPT A[INDEX]
+	 INDEX++
+	 end FOR
+	 
+    Smallest_number=A[0]
+	FOR INDEX 1 TO SIZE-1
+	IF(Smallest_number>A[INDEX])
+	       Smallest_number=A[INDEX]
+		   ENDIF
+		   INDEX++
+		   ENDFOR
+		   
+    DISPALY"SMALLEST NUMBER IS:",Smallest_number
+	for INDEX 0 TO SIZE-1
+        IF(A[INDEX]%2==0)
+           EVEN[EVEN_INDEX]=A[INDEX]
+           EVEN_INDEX++
+    ELSE 
+		   ODD[ODD_INDEX]=A[INDEX]
+		   ODD_INDEX++
+		   ENDIF
+		   INDEX++
+	ENDFOR
+	
+	DISPALY"EVEN ARRAY ELEMENTS ARE:"
+	    FOR INDEX 0 TO EVEN_INDEX
+	       DISPLAY EVEN[INDEX]
+	       EVEN_INDEX++
+		ENDFOR 
+	DISPLAY"ODD ARRAY ELEMENTS ARE:"
+        FOR INDEX 0 TO ODD_INDEX	
+		   DISPLAY ODD[INDEX]
+		   ODD_INDEX++
+		ENDFOR
+		
