@@ -1,0 +1,10 @@
+<html>
+	<head>
+	    <title>Standard Tags</title>
+	</head>
+	<body>
+	  <!--scorlling text-->
+	<marquee>Standard Tags</marquee>
+	
+	  </body>
+	<center>

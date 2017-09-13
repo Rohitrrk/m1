@@ -1,0 +1,147 @@
+<!DOCTYPE HTML>
+<html> 
+     <head>
+	       <title>Register Employee...</title>
+		   <link href="../css/emp.css" rel="stylesheet">
+		</head>
+		 <body >
+		   <h2 align=center>Fill Employee details..</h2>
+		   <form method ="post" novalidate>
+		   <table  bgcolor="black" cellspacing="0" cellpadding="1" align="center">
+		        <tr>
+                     <td class="right">name :&nbsp;&nbsp;&nbsp;</td>
+					<td>
+					<input type="text" name ="txtUN" id="txtUN"  pattern ="[A-Za-z]{3placeholder="Enter User Name" required/>
+					</td>
+					</tr>
+					<tr>
+                     <td class="right">Password :</td>
+					<td>
+					<input  type="Password" name ="txtPN" id="txtPN" placeholder="Enter password" required/>
+					</td>
+					</tr>
+					<tr>
+                     <td class="right">AGE :</td>
+					<td>
+					<input type="number" name ="txtAGE" id="txtAGE" placeholder="Enter age"/>
+					</td>
+					</tr>
+					<tr>
+                     <td class="right">Address :</td>
+					<td>
+					
+					   <textarea rows="5" cols="60"
+					   type="text" name ="txtEN" id="txtEN" placeholder="Enter address" disabled></textarea>
+					</td>
+					</tr>
+					<tr>
+                     <td class="right">mobile no :</td>
+					<td>
+					<input type="txt" maxlength="10" pattern="[7-9]{10} name ="txtRN" id="txtRN" placeholder="Enter number" readonly />
+					</td>
+					</tr>
+					<tr>
+                     <td class="right">Email :</td>
+					<td>
+					<input type="txt" name ="txtCN" id="txtPCN" placeholder="enter email"/>
+					</td>
+					</tr>
+					<tr>
+                     <td class="right">gender:</td>
+					<td>
+					<input type="radio" name ="gender" id="genMale" value="M" />male
+					<input type="radio" name ="gender" id="genFEMALE" value="F"/>female
+					</td>
+					</tr>
+					<tr>
+                     <td class="right">Language Known:&nbsp;&nbsp</td>
+					<td>
+					<input type="checkbox" name ="chKLK" id="chKH" value="Hin" checked/>Hindi
+					<input type="checkbox" name ="chKLh" id="chKH" value="Mar"/>Marathi
+					<input type="checkbox" name ="chKLH" id="chKH" value="Eng"/>English
+					<input type="checkbox" name ="chKH" id="chKH" value="tel"/>telgu
+					
+					
+					</td>
+					</tr>
+					<tr>
+                     <td class="right">select city:&nbsp;&nbsp</td>
+					<td>
+					<select name="ddlcity" style="width:150px" size="1">
+					<option value ="select">--select--</option>
+					<option selected value = "Mumbai">Mumbai</option>
+					<option selected value = "delhi">delhi</option>
+					<option selected value = "chennai">chennni</option>
+					<option selected value = "ban">ban</option>
+					
+					
+					
+					
+					</td>
+					</tr>
+					<tr>
+					   <td class="right">state</td>
+					   <td>
+					   <input type ="text" id="txtstate"
+					    name="txtstate" maxlength="20"
+						placeholder="state" list="Statelist"/>
+						<datalist id ="Statelist"/>
+						   <datalist id ="statelist">
+						 <option value="Maharashtra">MH</option>
+						  <option value="Andhra Pradesh">AP</option>
+						   <option value="UTTAR PRADESH">UP</option>
+						    <option value="karnataka">MH</option>
+							 <option value="Tamilnadu">tl</option>
+							 </datalist>
+						 </tr>
+						 </td>
+						 <tr>
+						    <td class ="right">date of Joining:
+							&nbsp;&nbsp;</td>
+							<td><input type ="date" id="txtDOJ"
+							name="txtDOJ" max ="2017-09-07"/></td>
+							</tr>
+							
+							
+					<tr>
+					     <td class="right">Upload Photo:&nbsp;</td>
+							<td>
+							   <input type="file" id="fileImg"
+							   name="fileImg"/>
+                             </td>
+								</tr>
+								<tr>
+					     <td class="right">Slider:&nbsp;</td>
+							<td>
+							   <input type="range" id="txtrange"
+							   name="txtrange" min="0" max="5" value ="0"/>
+                             </td>
+								</tr>
+								
+						<tr>
+					
+						<td align="center">
+						<input class ="btn" type ="submit" value="Register"/>
+						
+						
+				
+						
+						<input  class ="btn" type="reset" value="cancel"/>
+						</td>
+						</tr>
+						
+						<tr>  
+						   <td>
+						   <input type ="hidden" name = "message" id="message" value="rohit kanojia"/>
+							</td>
+							</tr>
+							
+					
+						
+			</table>
+			</form>
+			<button onclick="alert(document.forms[0].message.value)">Click here..</button>
+			</body>
+		</html>	
+					
+					

@@ -1,0 +1,129 @@
+<!DOCTYPE HTML>
+<html> 
+     <head>
+	       <title>Calculator...</title>
+		   <style> 
+		  /* universal selector*/
+		   *{ 
+		      font_family:Segoe UI;
+			  font-size:20px;
+			  color:blue;
+			font-style:italic; 
+		   }
+		   
+		   h2,h1
+		   {
+		   text-align:center;
+		   background-color:red;
+		   }
+		   table{border:5px solid red;
+		   }
+		  </style>
+		  <script>
+		  
+		  <!-- internal java script -->
+		  function Addition(a,b)
+		  { 
+		      var res = parseFloat(a.value)+ parseFloat(b.value);
+			  //alert ('Addition is '+res);
+			  document.getElementById("lblRes").innerHTML="<h1>Addition is "+res+"</h1>";
+		  } 
+		  function Subtraction(a,b)
+		  { 
+		      var res = parseFloat(a.value)-parseFloat(b.value);
+			  alert ('subtraction is '+res);
+			  
+		  }
+		   function MAX(a,b)
+		  { 
+		       if(parseFloat(a.value)>parseFloat(b.value))
+			     alert('First number  is greater');
+				 else if(parseFloat(a.value)>parseFloat(b.value))
+				 alert('second number  is grater');
+				 else('both are equal');
+		    } 
+			  function checkVowel(ch)
+			     {   
+				   if(isNaN(ch.value))
+				   {
+				     switch((ch.value).toLowerCase())
+					 {   
+					   case "a":
+					   case "e":
+					   case "i":
+					   case "o":
+					   case "u":
+					      alert('it is vowel');
+						  break;
+						 default:
+						   alert('It is a consonant');
+						}
+                     }				
+						else 
+						{
+						  alert ('enter character only');
+						}
+						  
+					   
+					   
+					 }
+				    
+				  
+		  </script>
+	  </head>
+	  <body>
+	   <h2> Calculator</h2> 
+	   <!--  -->
+	  <form>
+	     <table align="center" style="border:5px solid green">
+		      <tr> 
+			     <td>FIRST Number :</td>
+				 <td>
+				     <input type="text" name="txtFN"
+					 id="txtFN" placeholder="Number 1" />
+					 </td>
+				</tr>
+				<tr> 
+			     <td>Second Number :</td>
+				 <td>
+				     <input type="text" name="txtSN"
+					 id="txtSN" placeholder="Number 2" />
+					 </td>
+				</tr>
+				<tr> 
+			     <td>character :</td>
+				 <td>
+				     <input type="text" name="txtEN"
+					 id="txtEN" placeholder="Character" />
+					 </td>
+				</tr>
+				
+				
+				
+				<tr> 
+			     
+
+				 <!-- <input type= "submit" value="add" />-->
+				 <!-- inline js -->
+				 <!-- < -->
+				     <!--input type="button" value="ADD" <!-- onclick ="alert('Hellow world')"/-->
+		             <td>
+					 <input type="button" value="ADD" onclick ="Addition(txtFN,txtSN)"/>
+					 <input type="button" value="SUB" onclick ="Subtraction(txtFN,txtSN)"/>
+					 
+					    
+						     <input type ="submit" value="MAX" onclick="MAX(txtFN,txtSN)"/>
+							 
+						
+						     <input type ="submit" value="vowel" onclick="checkVowel(txtEN)"/>
+							 </td>
+					 <td>
+					     <input type="reset" value="clear"/>
+				</td>
+			  </tr>
+			  </table>
+			  <p id="lblRes"></p>
+			  </form>
+			  </body>
+			</html>
+ 		    

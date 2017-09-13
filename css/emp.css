@@ -1,0 +1,37 @@
+
+		  /* universal selector*/
+		   *{ 
+		      font_family:Segoe UI;
+			  color:blue;
+		   font_style:italic; }
+			h2{ font_family:
+			    
+			
+			
+			
+			
+			
+		   }
+		   table{
+			   border:5px solid blue;
+			    border-radius:5px 50px;
+		   }
+		   /* userdefined class in css*/
+		   .right{ text-align:right;
+		          font-weight:bold;
+			   
+		   }
+		   .btn{
+			   background-color:pink;
+			   color:black;
+			   border-radius:5px 10px;
+			   
+		   }
+		   
+		   td
+		   {
+		   text-align:left;
+		   background-color:white;
+		   color:red;
+		   }
+	
