@@ -1,0 +1,44 @@
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+
+public class ExampleHashmap {
+	public static void main(String [] args)
+	{
+		LinkedHashMap<Integer,String> hm=new LinkedHashMap<Integer,String>();
+		hm.put(106, "Rohit");
+		hm.put(101, "Sacchi");
+		hm.put(104, "magesh");
+		hm.put(102, "Ankita");
+		hm.put(105, "Rajvi");
+		hm.put(210, "Ram");
+		for(Map.Entry out:hm.entrySet() )
+		{
+			Integer key=(Integer) out.getKey();
+			String value=(String) out.getValue();
+			System.out.println(key);
+			System.out.println(value);
+
+		}
+		Iterator<Integer> itr=hm.keySet().iterator();
+		while(itr.hasNext())
+		{
+			Integer key=itr.next();
+			String value=hm.get(key);
+			System.out.println(key);
+			System.out.println(value);
+		}
+		
+			
+	}
+}
+
+
+
+		
+	
+
+
+

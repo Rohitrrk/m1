@@ -1,0 +1,24 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+
+public class ProductName {
+	public static void main(String [] args)
+	{
+		Scanner sc=new Scanner(System.in);
+		ArrayList<String> a1=new ArrayList();
+		System.out.println("Enter the  number of product ");
+		 int n=sc.nextInt();
+		 for(int i=1;i<=n;i++)
+		 {
+			  System.out.println("Enter the product name");
+			String j=sc.next();
+			a1.add(j);
+			// System.out.println(a1.add(j));
+		 }
+		 System.out.println(a1);
+
+		//System.out.println(a1);
+}
+}
+
